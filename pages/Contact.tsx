@@ -4,20 +4,22 @@ import { Mail, Phone, MessageSquare, Send } from 'lucide-react';
 import { CONTACT_INFO } from '../constants';
 
 const Contact: React.FC = () => {
+  const whatsappUrl = `https://wa.me/55${CONTACT_INFO.whatsapp.replace(/\D/g, '')}`;
+
   return (
     <div className="pt-24 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h1 className="text-4xl font-serif font-bold text-emerald-900 mb-6">Fale Conosco</h1>
           <p className="text-lg text-gray-600">
-            Dúvidas, sugestões ou elogios? Utilize o formulário abaixo ou nossos canais diretos.
+            Dúvidas, sugestões ou elogios? Utilize o formulário abaixo para iniciar um atendimento via WhatsApp ou use nossos canais diretos.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Contact Form */}
+          {/* Contact Form Area */}
           <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100">
-            <form className="space-y-6">
+            <div className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">Nome Completo</label>
@@ -46,21 +48,27 @@ const Contact: React.FC = () => {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Mensagem</label>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">Mensagem (opcional)</label>
                 <textarea 
                   rows={4} 
                   className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all"
                   placeholder="Como podemos ajudar?"
                 ></textarea>
               </div>
-              <button 
-                type="submit" 
+              
+              <a 
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full py-4 bg-emerald-600 text-white font-bold rounded-xl hover:bg-emerald-700 transition-all shadow-lg flex items-center justify-center gap-2"
               >
-                Enviar Mensagem
+                Enviar Mensagem via WhatsApp
                 <Send size={18} />
-              </button>
-            </form>
+              </a>
+              <p className="text-center text-xs text-gray-400 mt-4">
+                Ao clicar em enviar, você será redirecionado para o nosso WhatsApp oficial.
+              </p>
+            </div>
           </div>
 
           {/* Contact Info */}
@@ -90,7 +98,7 @@ const Contact: React.FC = () => {
                   <div>
                     <p className="text-sm font-bold text-green-600 uppercase tracking-widest mb-1">WhatsApp</p>
                     <a 
-                      href={`https://wa.me/55${CONTACT_INFO.whatsapp.replace(/\D/g, '')}`} 
+                      href={whatsappUrl} 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-lg font-medium text-gray-900 hover:text-green-600 transition-colors"
