@@ -1,0 +1,7 @@
+{
+  "name": "Clínica Viterbo",
+  "description": "Site oficial da Clínica Viterbo, especializada em Acupuntura e Clínica da Dor em Salvador, Bahia.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
