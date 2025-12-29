@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { MapPin, Phone, ExternalLink } from 'lucide-react';
+import { MapPin, Phone, ExternalLink, Building2 } from 'lucide-react';
 
 const Units: React.FC = () => {
   const units = [
@@ -43,7 +43,7 @@ const Units: React.FC = () => {
   ];
 
   return (
-    <div className="pt-24 pb-20">
+    <div className="pt-24 pb-20 bg-gray-50/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h1 className="text-4xl font-serif font-bold text-emerald-900 mb-6 uppercase tracking-tight">Nossas Unidades</h1>
@@ -55,50 +55,51 @@ const Units: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {units.map((unit, index) => (
-            <div key={index} className="bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 group flex flex-col hover:shadow-2xl transition-all duration-300">
-              <div className="h-48 bg-emerald-100 relative overflow-hidden">
-                <img 
-                  src={`https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800&sig=${index}`} 
-                  alt={unit.name} 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/80 via-emerald-900/20 to-transparent"></div>
-                <div className="absolute bottom-4 left-4">
-                  <span className="bg-emerald-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-[0.2em]">
-                    {unit.city}
-                  </span>
-                </div>
+            <div key={index} className="bg-white rounded-3xl p-8 shadow-sm border border-gray-200 group flex flex-col hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-6 opacity-5 pointer-events-none group-hover:scale-110 transition-transform duration-500">
+                <Building2 size={120} />
               </div>
-              <div className="p-8 flex flex-col flex-grow">
-                <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-emerald-700 transition-colors">{unit.name}</h3>
-                
-                <div className="space-y-4 text-gray-600 mb-8 flex-grow">
-                  <div className="flex items-start gap-3">
-                    <MapPin className="text-emerald-600 shrink-0 mt-1" size={18} />
-                    <span className="text-sm leading-relaxed">{unit.address}</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Phone className="text-emerald-600 shrink-0" size={18} />
-                    <a 
-                      href={`tel:${unit.phone.replace(/\D/g, '')}`}
-                      className="text-sm font-semibold hover:text-emerald-600 transition-colors"
-                    >
-                      {unit.phone}
-                    </a>
-                  </div>
-                </div>
 
-                <div className="flex flex-col gap-3">
+              <div className="mb-6">
+                <span className="inline-block bg-emerald-50 text-emerald-700 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-[0.2em] mb-4">
+                  {unit.city}
+                </span>
+                <h3 className="text-2xl font-serif font-bold text-gray-900 group-hover:text-emerald-700 transition-colors">
+                  {unit.name}
+                </h3>
+              </div>
+              
+              <div className="space-y-6 text-gray-600 mb-10 flex-grow relative z-10">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-emerald-50 rounded-xl flex items-center justify-center shrink-0 text-emerald-600">
+                    <MapPin size={20} />
+                  </div>
+                  <span className="text-sm leading-relaxed font-medium">{unit.address}</span>
+                </div>
+                
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 bg-emerald-50 rounded-xl flex items-center justify-center shrink-0 text-emerald-600">
+                    <Phone size={20} />
+                  </div>
                   <a 
-                    href={`https://www.google.com/maps/search/${encodeURIComponent(unit.name + ' ' + unit.address)}`} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 w-full py-3 bg-emerald-50 text-emerald-700 font-bold rounded-xl hover:bg-emerald-600 hover:text-white transition-all duration-300"
+                    href={`tel:${unit.phone.replace(/\D/g, '')}`}
+                    className="text-base font-bold text-gray-900 hover:text-emerald-600 transition-colors"
                   >
-                    Ver no Google Maps
-                    <ExternalLink size={16} />
+                    {unit.phone}
                   </a>
                 </div>
+              </div>
+
+              <div className="mt-auto">
+                <a 
+                  href={`https://www.google.com/maps/search/${encodeURIComponent(unit.name + ' ' + unit.address)}`} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 w-full py-4 bg-emerald-600 text-white font-bold rounded-2xl hover:bg-emerald-700 transition-all duration-300 shadow-lg shadow-emerald-100"
+                >
+                  Ver no Google Maps
+                  <ExternalLink size={18} />
+                </a>
               </div>
             </div>
           ))}
