@@ -5,15 +5,19 @@ import { Instagram, Facebook, MessageCircle, Mail, Phone, MapPin } from 'lucide-
 import { CONTACT_INFO } from '../constants';
 
 const Footer: React.FC = () => {
+  const LOGO_URL = "https://i.postimg.cc/85zXmK9H/logo-viterbo.png";
+
   return (
     <footer className="bg-slate-900 text-white pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand Column */}
           <div className="space-y-6">
-            <h2 className="text-2xl font-serif font-bold text-white">Clínica Viterbo</h2>
+            <div className="bg-white p-4 rounded-xl inline-block">
+              <img src={LOGO_URL} alt="Clínica Viterbo" className="h-12 w-auto" />
+            </div>
             <p className="text-slate-400 text-sm leading-relaxed">
-              Referência em Salvador no tratamento da dor e acupuntura médica. 
+              Referência em Salvador no tratamento da dor e acupuntura médica há mais de 20 anos. 
               Compromisso com o seu bem-estar através de 6 unidades integradas.
             </p>
             <div className="flex space-x-4">
@@ -34,16 +38,16 @@ const Footer: React.FC = () => {
             <h3 className="text-lg font-semibold mb-6">Links Úteis</h3>
             <ul className="space-y-4">
               <li>
-                <Link to="/privacidade" className="text-slate-400 hover:text-white text-sm transition-colors">Política de Privacidade</Link>
-              </li>
-              <li>
-                <Link to="/trabalhe-conosco" className="text-slate-400 hover:text-white text-sm transition-colors">Envie seu Curriculum</Link>
-              </li>
-              <li>
-                <Link to="/contato" className="text-slate-400 hover:text-white text-sm transition-colors">Fale Conosco</Link>
+                <Link to="/institucional" className="text-slate-400 hover:text-white text-sm transition-colors">Sobre a Clínica</Link>
               </li>
               <li>
                 <Link to="/unidades" className="text-slate-400 hover:text-white text-sm transition-colors">Nossas Unidades</Link>
+              </li>
+              <li>
+                <Link to="/agendamento" className="text-slate-400 hover:text-white text-sm transition-colors">Agendar Consulta</Link>
+              </li>
+              <li>
+                <Link to="/contato" className="text-slate-400 hover:text-white text-sm transition-colors">Fale Conosco</Link>
               </li>
             </ul>
           </div>
@@ -77,7 +81,7 @@ const Footer: React.FC = () => {
                 <MapPin className="text-emerald-400 flex-shrink-0" size={20} />
                 <div className="text-sm">
                   <p className="font-medium">Localização</p>
-                  <p className="text-slate-400">Salvador - Bahia (6 Unidades)</p>
+                  <p className="text-slate-400">Salvador e Lauro de Freitas (6 Unidades)</p>
                 </div>
               </div>
             </div>

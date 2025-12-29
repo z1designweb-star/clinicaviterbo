@@ -8,6 +8,7 @@ const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const LOGO_URL = "https://i.postimg.cc/85zXmK9H/logo-viterbo.png";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,21 +34,19 @@ const Navbar: React.FC = () => {
   const navLinks = [
     { label: 'Início', path: '/' },
     { label: 'Institucional', path: '/institucional' },
-    { label: 'Agende sua Consulta', path: '/agendamento' },
+    { label: 'Agende', path: '/agendamento' },
     { label: 'Especialidades', path: '/#especialidades', isAnchor: true, target: 'especialidades' },
-    { label: 'Convênios', path: '/#convenios', isAnchor: true, target: 'convenios' },
     { label: 'Unidades', path: '/unidades' },
     { label: 'Fale Conosco', path: '/contato' },
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 bg-white shadow-md ${isScrolled ? 'py-2' : 'py-3'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : 'bg-white/95 backdrop-blur-sm py-4'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0 flex items-center">
-            <Link to="/" className="flex flex-col">
-              <span className="text-2xl font-serif font-bold text-emerald-900">Clínica Viterbo</span>
-              <span className="text-[10px] uppercase tracking-widest text-emerald-600 font-semibold">Acupuntura & Clínica da Dor</span>
+            <Link to="/" className="flex items-center">
+              <img src={LOGO_URL} alt="Clínica Viterbo" className={`${isScrolled ? 'h-12' : 'h-14'} w-auto transition-all duration-300`} />
             </Link>
           </div>
 
@@ -59,7 +58,7 @@ const Navbar: React.FC = () => {
                     key={link.label}
                     href={link.path}
                     onClick={(e) => handleAnchorClick(e, link.target!)}
-                    className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 transition-all"
+                    className="px-3 py-2 rounded-md text-sm font-semibold text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 transition-all"
                   >
                     {link.label}
                   </a>
@@ -67,7 +66,7 @@ const Navbar: React.FC = () => {
                   <Link
                     key={link.label}
                     to={link.path}
-                    className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 transition-all"
+                    className="px-3 py-2 rounded-md text-sm font-semibold text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 transition-all"
                   >
                     {link.label}
                   </Link>
@@ -116,7 +115,7 @@ const Navbar: React.FC = () => {
               <Link
                 to="/agendamento"
                 onClick={() => setIsOpen(false)}
-                className="flex items-center justify-center w-full py-4 bg-emerald-600 text-white rounded-xl font-bold shadow-lg shadow-emerald-200"
+                className="flex items-center justify-center w-full py-4 bg-emerald-600 text-white rounded-xl font-bold shadow-lg"
               >
                 Agendar Consulta
               </Link>

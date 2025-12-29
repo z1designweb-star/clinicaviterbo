@@ -3,6 +3,8 @@ import React from 'react';
 import { MapPin, Phone, ExternalLink } from 'lucide-react';
 
 const Units: React.FC = () => {
+  const LOGO_URL = "https://i.postimg.cc/85zXmK9H/logo-viterbo.png"; // Placeholder para o logo enviado
+
   const units = [
     { 
       name: 'Unidade Salvador Trade', 
@@ -43,28 +45,27 @@ const Units: React.FC = () => {
   ];
 
   return (
-    <div className="pt-24 pb-20">
+    <div className="pt-24 pb-20 bg-gray-50/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h1 className="text-4xl font-serif font-bold text-emerald-900 mb-6 uppercase tracking-tight">Nossas Unidades</h1>
           <div className="w-20 h-1 bg-emerald-600 mx-auto mb-6 rounded-full"></div>
           <p className="text-lg text-gray-600 leading-relaxed">
-            A Clínica Viterbo está presente em localizações estratégicas para oferecer o melhor atendimento em Salvador e Lauro de Freitas.
+            Ambientes modernos e acolhedores, projetados para oferecer o melhor em saúde e bem-estar em localizações estratégicas.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {units.map((unit, index) => (
-            <div key={index} className="bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 group flex flex-col hover:shadow-2xl transition-all duration-300">
-              <div className="h-48 bg-emerald-100 relative overflow-hidden">
+            <div key={index} className="bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-200 group flex flex-col hover:shadow-xl transition-all duration-300">
+              <div className="h-48 bg-white relative flex items-center justify-center p-12 border-b border-gray-100">
                 <img 
-                  src={`https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800&sig=${index}`} 
-                  alt={unit.name} 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  src={LOGO_URL} 
+                  alt="Clínica Viterbo Logo" 
+                  className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/80 via-emerald-900/20 to-transparent"></div>
-                <div className="absolute bottom-4 left-4">
-                  <span className="bg-emerald-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-[0.2em]">
+                <div className="absolute top-4 left-4">
+                  <span className="bg-emerald-600 text-white text-[9px] font-bold px-3 py-1 rounded-full uppercase tracking-[0.2em]">
                     {unit.city}
                   </span>
                 </div>
