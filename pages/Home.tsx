@@ -18,9 +18,9 @@ const Home: React.FC = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent"></div>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-48">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 lg:py-48">
           <div className="max-w-2xl">
-            <h1 className="text-5xl md:text-6xl font-serif font-bold text-emerald-900 leading-tight mb-6">
+            <h1 className="text-4xl md:text-6xl font-serif font-bold text-emerald-900 leading-tight mb-6">
               Sua saúde e alívio da dor são <span className="text-emerald-600">nossa prioridade.</span>
             </h1>
             <p className="text-lg text-gray-600 mb-10 leading-relaxed">
@@ -42,18 +42,19 @@ const Home: React.FC = () => {
               </Link>
             </div>
 
-            <div className="mt-16 grid grid-cols-3 gap-8 border-t border-gray-200 pt-8">
-              <div>
+            {/* Ajuste de Responsividade nos Dados Estatísticos */}
+            <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-y-8 gap-x-8 border-t border-gray-200 pt-8">
+              <div className="flex flex-col items-center sm:items-start">
                 <p className="text-3xl font-bold text-emerald-900">6</p>
-                <p className="text-sm text-gray-500 uppercase tracking-wider font-medium">Unidades</p>
+                <p className="text-sm text-gray-500 uppercase tracking-widest font-medium">Unidades</p>
               </div>
-              <div>
+              <div className="flex flex-col items-center sm:items-start">
                 <p className="text-3xl font-bold text-emerald-900">30+</p>
-                <p className="text-sm text-gray-500 uppercase tracking-wider font-medium">Convênios</p>
+                <p className="text-sm text-gray-500 uppercase tracking-widest font-medium">Convênios</p>
               </div>
-              <div>
+              <div className="flex flex-col items-center sm:items-start">
                 <p className="text-3xl font-bold text-emerald-900">10+</p>
-                <p className="text-sm text-gray-500 uppercase tracking-wider font-medium">Especialidades</p>
+                <p className="text-sm text-gray-500 uppercase tracking-widest font-medium">Especialidades</p>
               </div>
             </div>
           </div>
