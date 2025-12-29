@@ -89,7 +89,14 @@ const Contact: React.FC = () => {
                   </div>
                   <div>
                     <p className="text-sm font-bold text-green-600 uppercase tracking-widest mb-1">WhatsApp</p>
-                    <p className="text-lg font-medium text-gray-900">{CONTACT_INFO.whatsapp}</p>
+                    <a 
+                      href={`https://wa.me/55${CONTACT_INFO.whatsapp.replace(/\D/g, '')}`} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-lg font-medium text-gray-900 hover:text-green-600 transition-colors"
+                    >
+                      {CONTACT_INFO.whatsapp}
+                    </a>
                   </div>
                 </div>
 
@@ -99,7 +106,12 @@ const Contact: React.FC = () => {
                   </div>
                   <div>
                     <p className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-1">Telefone</p>
-                    <p className="text-lg font-medium text-gray-900">{CONTACT_INFO.phone}</p>
+                    <a 
+                      href={`tel:${CONTACT_INFO.phone.replace(/\D/g, '')}`} 
+                      className="text-lg font-medium text-gray-900 hover:text-emerald-600 transition-colors"
+                    >
+                      {CONTACT_INFO.phone}
+                    </a>
                   </div>
                 </div>
               </div>
