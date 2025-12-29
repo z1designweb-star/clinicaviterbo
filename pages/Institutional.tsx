@@ -3,7 +3,7 @@ import React from 'react';
 
 const Institutional: React.FC = () => {
   return (
-    <div className="pt-24 pb-20">
+    <div className="pt-36 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="max-w-3xl mx-auto text-center mb-20">
