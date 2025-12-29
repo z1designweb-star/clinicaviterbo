@@ -27,7 +27,7 @@ export const SPECIALTIES = [
 ];
 
 export const INSURANCES = [
-  'Amil', 'Apub', 'Asfeb', 'Asseba', 'Asseaz', 'Asteba', 'AtitudeSaúde', 'BCSaúde', 
+  'Amil', 'Apub', 'Asfeb', 'Asseba', 'Assefaz', 'Asteba', 'AtitudeSaúde', 'BCSaúde', 
   'Camed Saúde', 'CapSaúde', 'Casembrapa', 'Casseb', 'Cassi', 'Codevasf', 'Conab', 
   'Fachesf', 'Fusex', 'Gama', 'Geap Saúde', 'Hapvida', 'Hospital Naval de Salvador', 
   'Life', 'Nordeste Saúde Empresarial', 'NotreDame Intermédica', 'Pasa', 'Saúde Petrobrás', 

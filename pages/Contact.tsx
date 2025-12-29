@@ -74,7 +74,12 @@ const Contact: React.FC = () => {
                   </div>
                   <div>
                     <p className="text-sm font-bold text-emerald-600 uppercase tracking-widest mb-1">E-mail</p>
-                    <p className="text-lg font-medium text-gray-900">{CONTACT_INFO.email}</p>
+                    <a 
+                      href={`mailto:${CONTACT_INFO.email}`} 
+                      className="text-lg font-medium text-gray-900 hover:text-emerald-600 transition-colors"
+                    >
+                      {CONTACT_INFO.email}
+                    </a>
                   </div>
                 </div>
 
@@ -105,9 +110,12 @@ const Contact: React.FC = () => {
               <p className="text-gray-600 mb-6 leading-relaxed">
                 Quer fazer parte da equipe Clínica Viterbo? Envie seu currículo para nosso RH através do link abaixo.
               </p>
-              <button className="px-6 py-3 bg-white text-emerald-600 border border-emerald-200 font-bold rounded-xl hover:bg-emerald-100 transition-colors">
+              <a 
+                href="mailto:diretoria@clinicaviterbo.com.br"
+                className="inline-block px-6 py-3 bg-white text-emerald-600 border border-emerald-200 font-bold rounded-xl hover:bg-emerald-100 transition-colors"
+              >
                 Enviar Currículo
-              </button>
+              </a>
             </div>
           </div>
         </div>
