@@ -15,12 +15,13 @@ const Booking: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-white p-10 rounded-3xl shadow-lg border border-gray-100 text-center flex flex-col items-center">
-            <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-6">
+          {/* Card WhatsApp */}
+          <div className="bg-emerald-50 p-10 rounded-3xl border-2 border-emerald-200 hover:border-emerald-500 transition-all duration-500 group text-center flex flex-col items-center">
+            <div className="w-16 h-16 bg-white text-green-600 rounded-2xl flex items-center justify-center mb-6 border border-emerald-100 group-hover:bg-green-600 group-hover:text-white transition-all duration-300">
               <MessageSquare size={32} />
             </div>
             <h3 className="text-2xl font-bold text-gray-900 mb-4">Via WhatsApp</h3>
-            <p className="text-gray-600 mb-8">Atendimento rápido e direto com nossa central de agendamentos.</p>
+            <p className="text-emerald-800/80 mb-8">Atendimento rápido e direto com nossa central de agendamentos.</p>
             <a 
               href={`https://wa.me/55${CONTACT_INFO.whatsapp.replace(/\D/g, '')}`} 
               target="_blank" 
@@ -31,6 +32,7 @@ const Booking: React.FC = () => {
             </a>
           </div>
 
+          {/* Card Telefone (Mantido com destaque escuro) */}
           <div className="bg-emerald-900 p-10 rounded-3xl shadow-xl text-center flex flex-col items-center text-white relative overflow-hidden">
              <div className="absolute top-0 right-0 p-4 opacity-10">
                <Calendar size={120} />
@@ -48,21 +50,22 @@ const Booking: React.FC = () => {
             </a>
           </div>
 
-          <div className="bg-white p-10 rounded-3xl shadow-lg border border-gray-100 text-center flex flex-col items-center">
-            <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mb-6">
+          {/* Card Horário */}
+          <div className="bg-emerald-50 p-10 rounded-3xl border-2 border-emerald-200 hover:border-emerald-500 transition-all duration-500 group text-center flex flex-col items-center">
+            <div className="w-16 h-16 bg-white text-emerald-600 rounded-2xl flex items-center justify-center mb-6 border border-emerald-100 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">
               <Clock size={32} />
             </div>
             <h3 className="text-2xl font-bold text-gray-900 mb-4">Horário de Atendimento</h3>
-            <div className="text-gray-600 space-y-2 mb-8 text-left w-full">
-              <div className="flex justify-between border-b border-gray-100 pb-2">
+            <div className="text-emerald-800/80 space-y-2 mb-8 text-left w-full">
+              <div className="flex justify-between border-b border-emerald-200/50 pb-2">
                 <span>Segunda - Sexta</span>
                 <span className="font-semibold">07h às 19h</span>
               </div>
-              <div className="flex justify-between border-b border-gray-100 pb-2">
+              <div className="flex justify-between border-b border-emerald-200/50 pb-2">
                 <span>Sábado</span>
                 <span className="font-semibold">07h às 13h</span>
               </div>
-              <div className="flex justify-between border-b border-gray-100 pb-2">
+              <div className="flex justify-between border-b border-emerald-200/50 pb-2">
                 <span>Domingo</span>
                 <span className="font-semibold">Fechado</span>
               </div>
