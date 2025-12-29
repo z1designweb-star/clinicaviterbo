@@ -75,9 +75,9 @@ const Home: React.FC = () => {
               <Link 
                 key={index} 
                 to={`/especialidades/${spec.slug}`}
-                className="p-8 bg-gray-50 rounded-2xl hover:bg-white hover:shadow-xl transition-all duration-300 group border border-transparent hover:border-emerald-100 block"
+                className="p-8 bg-emerald-50 rounded-2xl border-2 border-emerald-200 hover:border-emerald-500 transition-all duration-300 group block"
               >
-                <div className="mb-6 inline-flex items-center justify-center w-16 h-16 bg-emerald-100 text-emerald-600 rounded-xl group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-300">
+                <div className="mb-6 inline-flex items-center justify-center w-16 h-16 bg-white text-emerald-600 rounded-xl border border-emerald-100 group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-300 shadow-sm">
                   {spec.icon}
                 </div>
                 <h4 className="text-lg font-bold text-gray-900 leading-tight group-hover:text-emerald-700 transition-colors">{spec.name}</h4>
@@ -103,7 +103,7 @@ const Home: React.FC = () => {
             {INSURANCES.map((insurance, index) => (
               <div 
                 key={index} 
-                className="bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex items-center justify-center text-center hover:shadow-md hover:border-emerald-200 transition-all"
+                className="bg-emerald-50 p-4 rounded-xl border-2 border-emerald-100 hover:border-emerald-400 flex items-center justify-center text-center transition-all"
               >
                 <span className="text-sm font-semibold text-gray-700">{insurance}</span>
               </div>
