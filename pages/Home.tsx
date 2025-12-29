@@ -36,7 +36,7 @@ const Home: React.FC = () => {
               </Link>
               <Link 
                 to="/institucional" 
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-emerald-900 font-semibold rounded-full border border-emerald-100 hover:bg-emerald-50 transition-all"
+                className="inline-flex items-center justify-center px-8 py-4 bg-white text-emerald-900 font-semibold rounded-full border-2 border-emerald-600 hover:bg-emerald-50 transition-all"
               >
                 Conheça a Clínica
               </Link>
