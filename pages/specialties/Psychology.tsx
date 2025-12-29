@@ -4,7 +4,7 @@ import SpecialtyLayout from '../../components/SpecialtyLayout';
 
 const Psychology: React.FC = () => {
   return (
-    <SpecialtyLayout title="Psicologia" image="https://images.unsplash.com/photo-1527137342181-19aab11a8ee1?auto=format&fit=crop&q=80&w=1200">
+    <SpecialtyLayout title="Psicologia">
       <p>
         A PSICOLOGIA é a ciência que procura identificar e desvendar padrões e comportamentos humanos através da observação, interpretação e também da interação direta com as pessoas. 
       </p>

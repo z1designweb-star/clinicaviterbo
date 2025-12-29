@@ -4,7 +4,7 @@ import SpecialtyLayout from '../../components/SpecialtyLayout';
 
 const Acupuncture: React.FC = () => {
   return (
-    <SpecialtyLayout title="Acupuntura Médica" image="https://images.unsplash.com/photo-1512290923902-8a9f81dc2069?auto=format&fit=crop&q=80&w=1200">
+    <SpecialtyLayout title="Acupuntura Médica">
       <p className="text-xl font-medium text-emerald-800">
         A ACUPUNTURA é uma terapia milenar originária da China, que consiste na aplicação de agulhas em pontos específicos do corpo para promover saúde e para tratar doenças.
       </p>

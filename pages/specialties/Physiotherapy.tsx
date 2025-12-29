@@ -4,7 +4,7 @@ import SpecialtyLayout from '../../components/SpecialtyLayout';
 
 const Physiotherapy: React.FC = () => {
   return (
-    <SpecialtyLayout title="Fisioterapia" image="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1200">
+    <SpecialtyLayout title="Fisioterapia">
       <p>
         Na Clínica Viterbo, a FISIOTERAPIA existe desde a convencional com serviços especializados como a Reeducação Postural Global (RPG), a Terapia Manual e o Taping.
       </p>

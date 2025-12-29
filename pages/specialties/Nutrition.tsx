@@ -4,7 +4,7 @@ import SpecialtyLayout from '../../components/SpecialtyLayout';
 
 const Nutrition: React.FC = () => {
   return (
-    <SpecialtyLayout title="Nutrição" image="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&q=80&w=1200">
+    <SpecialtyLayout title="Nutrição">
       <p className="text-xl font-medium text-emerald-800">
         A NUTRIÇÃO é componente fundamental no tratamento das principais doenças da atualidade. 
       </p>

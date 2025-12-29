@@ -6,10 +6,9 @@ import { ChevronLeft, Calendar } from 'lucide-react';
 interface SpecialtyLayoutProps {
   title: string;
   children: React.ReactNode;
-  image?: string;
 }
 
-const SpecialtyLayout: React.FC<SpecialtyLayoutProps> = ({ title, children, image }) => {
+const SpecialtyLayout: React.FC<SpecialtyLayoutProps> = ({ title, children }) => {
   return (
     <div className="pt-24 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -23,12 +22,7 @@ const SpecialtyLayout: React.FC<SpecialtyLayoutProps> = ({ title, children, imag
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-8">
-            <h1 className="text-4xl md:text-5xl font-serif font-bold text-emerald-900 mb-8">{title}</h1>
-            {image && (
-              <div className="mb-10 rounded-3xl overflow-hidden shadow-2xl h-64 md:h-96">
-                <img src={image} alt={title} className="w-full h-full object-cover" />
-              </div>
-            )}
+            <h1 className="text-4xl md:text-5xl font-serif font-bold text-emerald-900 mb-8 border-b border-emerald-100 pb-4">{title}</h1>
             <div className="prose prose-lg prose-emerald max-w-none text-gray-700 leading-relaxed space-y-6">
               {children}
             </div>

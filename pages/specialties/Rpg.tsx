@@ -4,7 +4,7 @@ import SpecialtyLayout from '../../components/SpecialtyLayout';
 
 const Rpg: React.FC = () => {
   return (
-    <SpecialtyLayout title="RPG" image="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=1200">
+    <SpecialtyLayout title="RPG">
       <p>
         O RPG (Reeducação Postural Global) é um método original realizado exclusivamente por fisioterapeutas, que trata as desarmonias do corpo humano, levando em consideração as individualidades de cada paciente. 
       </p>

@@ -4,7 +4,7 @@ import SpecialtyLayout from '../../components/SpecialtyLayout';
 
 const Rheumatology: React.FC = () => {
   return (
-    <SpecialtyLayout title="Reumatologia" image="https://images.unsplash.com/photo-1579154235602-3c2cfa459ac1?auto=format&fit=crop&q=80&w=1200">
+    <SpecialtyLayout title="Reumatologia">
       <p>
         A Reumatologia é a especialidade médica que estuda, diagnostica e trata patologias que afetam o sistema musculoesquelético: articulações, ligamento, músculos, ossos, tendões e o tecido conjuntivo.
       </p>

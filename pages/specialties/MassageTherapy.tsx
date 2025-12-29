@@ -4,7 +4,7 @@ import SpecialtyLayout from '../../components/SpecialtyLayout';
 
 const MassageTherapy: React.FC = () => {
   return (
-    <SpecialtyLayout title="Massoterapia" image="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&q=80&w=1200">
+    <SpecialtyLayout title="Massoterapia">
       <p>
         A MASSOTERAPIA engloba diversas técnicas manuais focadas no equilíbrio físico e mental. Na Clínica Viterbo, oferecemos:
       </p>

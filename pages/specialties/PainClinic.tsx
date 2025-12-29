@@ -4,7 +4,7 @@ import SpecialtyLayout from '../../components/SpecialtyLayout';
 
 const PainClinic: React.FC = () => {
   return (
-    <SpecialtyLayout title="Clínica da Dor" image="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&q=80&w=1200">
+    <SpecialtyLayout title="Clínica da Dor">
       <p className="text-xl font-medium text-emerald-800">
         Um dos sintomas que mais levam as pessoas aos consultórios médicos é a dor. 
       </p>

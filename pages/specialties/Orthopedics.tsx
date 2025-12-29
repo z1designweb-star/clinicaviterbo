@@ -4,9 +4,9 @@ import SpecialtyLayout from '../../components/SpecialtyLayout';
 
 const Orthopedics: React.FC = () => {
   return (
-    <SpecialtyLayout title="Ortopedia" image="https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?auto=format&fit=crop&q=80&w=1200">
+    <SpecialtyLayout title="Ortopedia">
       <p>
-        A ortopedia é uma especialidade médica que trata as patologias provenientes de lesões e traumas que afetam o sistema locomotor do indivíduo, incluindo ossos, músculos, tendões, articulações, cartilagens e ligamentos.
+        A ortopedia é uma especialidade médica que trata as patologias provenientes de lesões e traumas que afetam o sistema locomotor do indivíduo, incluindo ossos, muscles, tendões, articulações, cartilagens e ligamentos.
       </p>
       <p>
         A ortopedia pode tratar doenças relacionadas a traumas, como torções, fraturas e luxações. Os traumas podem ser causados por impactos imediatos provenientes de fontes externas, como acidentes, pancadas e quedas e também trata condições congênitas.
