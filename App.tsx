@@ -11,6 +11,7 @@ import Units from './pages/Units';
 import UnitDoctors from './pages/UnitDoctors';
 import Contact from './pages/Contact';
 import Doctors from './pages/Doctors';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 
 // Specialty Pages
 import Acupuncture from './pages/specialties/Acupuncture';
@@ -58,6 +59,7 @@ const App: React.FC = () => {
             <Route path="/unidades" element={<Units />} />
             <Route path="/unidades/:unitSlug/medicos" element={<UnitDoctors />} />
             <Route path="/contato" element={<Contact />} />
+            <Route path="/privacidade" element={<PrivacyPolicy />} />
             
             {/* Specialty Routes */}
             <Route path="/especialidades/acupuntura" element={<Acupuncture />} />
