@@ -32,7 +32,7 @@ export const UNITS = [
     name: 'Unidade Salvador Trade', 
     city: 'Salvador - BA',
     address: 'Av. Tancredo Neves, 1632, Ed. Salvador Trade Center, Torre Sul, salas 1801 a 1804, Caminho das Árvores, Salvador/BA, Cep: 41.820-020', 
-    phone: '(71) 9 9336-0025' 
+    phone: '(71) 3016-3015' 
   },
   { 
     slug: 'boulevard-side',
@@ -160,8 +160,119 @@ export const UNIT_DOCTORS: Record<string, Doctor[]> = {
       ]
     }
   ],
-  // Outras unidades podem ser adicionadas aqui posteriormente
-  'boulevard-side': [],
+  'boulevard-side': [
+    {
+      name: 'Dr. Walter Viterbo',
+      crm: '11188',
+      specialties: ['Acupuntura', 'Dor'],
+      schedule: [
+        { day: 'Terça-feira', hours: '09h00 às 12h00' },
+        { day: 'Quinta-feira', hours: '09h00 às 12h00' }
+      ]
+    },
+    {
+      name: 'Dra. Manuela Diana',
+      crm: '25095',
+      specialties: ['Acupuntura', 'Dor'],
+      schedule: [
+        { day: 'Segunda-feira', hours: '08h00 às 13h30' },
+        { day: 'Quinta-feira', hours: '08h15 às 11h30 e 13h30 às 17h00' }
+      ]
+    },
+    {
+      name: 'Dra. Vanessa Basílio',
+      crm: '17140',
+      specialties: ['Acupuntura'],
+      schedule: [
+        { day: 'Quarta-feira', hours: '08h00 às 12h30' }
+      ]
+    },
+    {
+      name: 'Dr. Felipe Caldas',
+      crm: '36959',
+      specialties: ['Acupuntura', 'Dor'],
+      schedule: [
+        { day: 'Terça-feira', hours: '14h00 às 18h00' },
+        { day: 'Sexta-feira', hours: '14h00 às 18h00' }
+      ]
+    },
+    {
+      name: 'Dra. Juliana Alencar',
+      crm: '25834',
+      specialties: ['Acupuntura', 'Dor'],
+      schedule: [
+        { day: 'Segunda-feira', hours: '08h00 às 11h30 (Agenda Fechada até 28/09/2025)' }
+      ]
+    },
+    {
+      name: 'Dr. Marcelo Pedrosa',
+      crm: '31062',
+      specialties: ['Acupuntura', 'Dor', 'Ortopedia'],
+      schedule: [
+        { day: 'Quarta-feira', hours: '08h00 às 12h00' }
+      ]
+    },
+    {
+      name: 'Dra. Liz Leite',
+      crm: '24792',
+      specialties: ['Acupuntura', 'Dor'],
+      schedule: [
+        { day: 'Segunda-feira', hours: '14h00 às 17h30' },
+        { day: 'Quinta-feira', hours: '14h00 às 17h00' }
+      ]
+    },
+    {
+      name: 'Dr. Juan Calcagno',
+      crm: '24344',
+      specialties: ['Acupuntura', 'Dor'],
+      schedule: [
+        { day: 'Terça-feira', hours: '08h30 às 11h30 e 13h30 às 18h00' },
+        { day: 'Sexta-feira', hours: '08h30 às 11h30 e 13h30 às 18h00' }
+      ]
+    },
+    {
+      name: 'Dra. Cristina Peres',
+      crm: '22497',
+      specialties: ['Acupuntura', 'Dor'],
+      schedule: [
+        { day: 'Segunda-feira', hours: '14h30 às 18h00 (Agenda Fechada)' },
+        { day: 'Quarta-feira', hours: '14h00 às 18h00 (Agenda Fechada)' },
+        { day: 'Sábado', hours: '08h00 às 11h00' }
+      ]
+    },
+    {
+      name: 'Dr. Antônio Mário Lino',
+      crm: '11461',
+      specialties: ['Ortopedia', 'Dor'],
+      schedule: [
+        { day: 'Quarta-feira', hours: '14h30 às 17h50' }
+      ]
+    },
+    {
+      name: 'Dr. Paulo Conceição',
+      crm: '10640',
+      specialties: ['Acupuntura'],
+      schedule: [
+        { day: 'Sábado', hours: '08h00 às 11h30' }
+      ]
+    },
+    {
+      name: 'Dr. Mário Augusto',
+      crm: '23299',
+      specialties: ['Acupuntura', 'Dor'],
+      schedule: [
+        { day: 'Quarta-feira', hours: '14h00 às 18h00' }
+      ]
+    },
+    {
+      name: 'Dra. Franciele Portela',
+      crm: '31512',
+      specialties: ['Fisiatria'],
+      schedule: [
+        { day: 'Quinta-feira', hours: '08h00 às 11h45' }
+      ]
+    }
+  ],
   'itaigara': [],
   'hangar-park': [],
   'comercio': [],
