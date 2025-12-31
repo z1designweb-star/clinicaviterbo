@@ -8,7 +8,6 @@ const UnitDoctors: React.FC = () => {
   const { unitSlug } = useParams<{ unitSlug: string }>();
   const unit = UNITS.find(u => u.slug === unitSlug);
   const doctors = unitSlug ? UNIT_DOCTORS[unitSlug] : [];
-  const whatsappLink = "https://wa.me/5571999915525";
 
   if (!unit) {
     return (
@@ -117,15 +116,13 @@ const UnitDoctors: React.FC = () => {
                   </div>
 
                   <div className="mt-auto">
-                    <a 
-                      href={whatsappLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <Link 
+                      to="/agendamento"
                       className="flex items-center justify-center gap-3 w-full py-4.5 bg-emerald-600 text-white font-black rounded-2xl hover:bg-emerald-700 transition-all duration-300 shadow-xl shadow-emerald-200 group-hover:scale-[1.03] active:scale-95 py-4"
                     >
-                      <MessageCircle size={20} className="fill-white/20" />
+                      <Calendar size={20} className="fill-white/20" />
                       Agende sua Consulta
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
