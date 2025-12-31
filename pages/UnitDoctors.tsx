@@ -1,13 +1,14 @@
 
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ChevronLeft, Calendar, User, Clock, Stethoscope } from 'lucide-react';
+import { ChevronLeft, Calendar, User, Clock, Stethoscope, MapPin, MessageCircle } from 'lucide-react';
 import { UNITS, UNIT_DOCTORS } from '../constants';
 
 const UnitDoctors: React.FC = () => {
   const { unitSlug } = useParams<{ unitSlug: string }>();
   const unit = UNITS.find(u => u.slug === unitSlug);
   const doctors = unitSlug ? UNIT_DOCTORS[unitSlug] : [];
+  const whatsappLink = "https://wa.me/5571999915525";
 
   if (!unit) {
     return (
@@ -29,17 +30,26 @@ const UnitDoctors: React.FC = () => {
           Voltar para Unidades
         </Link>
 
-        <div className="mb-16">
+        <div className="mb-12">
           <h1 className="text-4xl font-serif font-bold text-emerald-900 mb-4">{unit.name}</h1>
-          <p className="text-gray-600 max-w-2xl">Conheça os especialistas que atendem nesta unidade e seus respectivos horários de atendimento.</p>
+          <div className="flex items-start gap-3 bg-white p-4 rounded-2xl border border-gray-100 shadow-sm max-w-2xl mb-6">
+            <div className="w-10 h-10 bg-emerald-50 rounded-xl flex items-center justify-center shrink-0 text-emerald-600">
+              <MapPin size={20} />
+            </div>
+            <div>
+              <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Endereço da Unidade</p>
+              <p className="text-sm text-gray-700 leading-relaxed font-medium">{unit.address}</p>
+            </div>
+          </div>
+          <p className="text-gray-600">Conheça os especialistas que atendem nesta unidade e seus respectivos horários de atendimento.</p>
         </div>
 
         {doctors && doctors.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {doctors.map((doc, idx) => (
-              <div key={idx} className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 flex flex-col">
+              <div key={idx} className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 flex flex-col group">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center shrink-0">
+                  <div className="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center shrink-0 group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-300">
                     <User size={28} />
                   </div>
                   <div>
@@ -54,27 +64,43 @@ const UnitDoctors: React.FC = () => {
                     Especialidades
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    {doc.specialties.map((spec, sIdx) => (
-                      <span key={sIdx} className="px-3 py-1 bg-gray-50 text-gray-600 text-[11px] font-bold rounded-lg border border-gray-100">
-                        {spec}
-                      </span>
-                    ))}
+                    {doc.specialties.length > 0 ? (
+                      doc.specialties.map((spec, sIdx) => (
+                        <span key={sIdx} className="px-3 py-1 bg-gray-50 text-gray-600 text-[11px] font-bold rounded-lg border border-gray-100">
+                          {spec}
+                        </span>
+                      ))
+                    ) : (
+                      <span className="text-xs text-gray-400 italic">Especialidade não informada</span>
+                    )}
                   </div>
                 </div>
 
-                <div className="mt-auto pt-6 border-t border-gray-50">
+                <div className="mb-8 flex-grow">
                   <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3 flex items-center gap-1">
                     <Clock size={12} />
                     Horários de Atendimento
                   </p>
                   <div className="space-y-3">
                     {doc.schedule.map((sch, schIdx) => (
-                      <div key={schIdx} className="flex flex-col">
+                      <div key={schIdx} className="flex flex-col border-l-2 border-emerald-50 pl-3">
                         <span className="text-xs font-bold text-gray-800">{sch.day}</span>
                         <span className="text-xs text-gray-500">{sch.hours}</span>
                       </div>
                     ))}
                   </div>
+                </div>
+
+                <div className="mt-auto pt-6 border-t border-gray-50">
+                  <a 
+                    href={whatsappLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 w-full py-4 bg-emerald-600 text-white font-bold rounded-2xl hover:bg-emerald-700 transition-all duration-300 shadow-lg shadow-emerald-100 group-hover:scale-[1.02]"
+                  >
+                    <MessageCircle size={18} />
+                    Agende sua Consulta
+                  </a>
                 </div>
               </div>
             ))}
