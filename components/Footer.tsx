@@ -41,7 +41,7 @@ const Footer: React.FC = () => {
                 <Link to="/privacidade" className="text-slate-400 hover:text-white text-sm transition-colors">Política de Privacidade</Link>
               </li>
               <li>
-                <Link to="/trabalhe-conosco" className="text-slate-400 hover:text-white text-sm transition-colors">Envie seu Curriculum</Link>
+                <Link to="/contato" className="text-slate-400 hover:text-white text-sm transition-colors">Envie seu Curriculum</Link>
               </li>
               <li>
                 <Link to="/contato" className="text-slate-400 hover:text-white text-sm transition-colors">Fale Conosco</Link>
