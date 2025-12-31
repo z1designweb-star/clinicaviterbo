@@ -273,7 +273,168 @@ export const UNIT_DOCTORS: Record<string, Doctor[]> = {
       ]
     }
   ],
-  'itaigara': [],
+  'itaigara': [
+    {
+      name: 'Dr. Walter Viterbo',
+      crm: '11188',
+      specialties: ['Acupuntura', 'Dor'],
+      schedule: [
+        { day: 'Segunda-feira', hours: '14h00 às 18h20' },
+        { day: 'Quarta-feira', hours: '14h00 às 18h30' },
+        { day: 'Sexta-feira', hours: '09h00 às 12h00' }
+      ]
+    },
+    {
+      name: 'Dr. Marcelo Pedrosa',
+      crm: '31062',
+      specialties: ['Acupuntura', 'Dor', 'Ortopedia'],
+      schedule: [
+        { day: 'Terça-feira', hours: '08h00 às 12h00' },
+        { day: 'Quinta-feira', hours: '08h00 às 11h30' }
+      ]
+    },
+    {
+      name: 'Dr. Felipe Caldas',
+      crm: '36959',
+      specialties: ['Acupuntura', 'Dor'],
+      schedule: [
+        { day: 'Segunda-feira', hours: '08h00 às 11h30' },
+        { day: 'Quinta-feira', hours: '08h00 às 11h30 e 14h00 às 17h00' }
+      ]
+    },
+    {
+      name: 'Dra. Lia Tércia',
+      crm: '19891',
+      specialties: ['Acupuntura', 'Dor'],
+      schedule: [
+        { day: 'Segunda-feira', hours: '08h30 às 12h00' }
+      ]
+    },
+    {
+      name: 'Dra. Liz Leite',
+      crm: '24792',
+      specialties: ['Acupuntura', 'Dor'],
+      schedule: [
+        { day: 'Terça-feira', hours: '09h00 às 12h00' }
+      ]
+    },
+    {
+      name: 'Dr. Ilano Rebello',
+      crm: '15583',
+      specialties: ['Acupuntura', 'Dor'],
+      schedule: [
+        { day: 'Segunda-feira', hours: '13h30 às 17h30' },
+        { day: 'Sexta-feira', hours: '13h30 às 18h00' }
+      ]
+    },
+    {
+      name: 'Dra. Aline Oquendo',
+      crm: '15800',
+      specialties: ['Acupuntura'],
+      schedule: [
+        { day: 'Terça-feira', hours: '14h30 às 17h30' }
+      ]
+    },
+    {
+      name: 'Dr. José Mitsuru',
+      crm: '23723',
+      specialties: ['Acupuntura', 'Dor'],
+      schedule: [
+        { day: 'Terça-feira', hours: '14h00 às 17h30' },
+        { day: 'Sábado', hours: '08h00 às 11h30' }
+      ]
+    },
+    {
+      name: 'Dr. Mário Sanches',
+      crm: '32475',
+      specialties: ['Ortopedia'],
+      schedule: [
+        { day: 'Terça-feira', hours: '14h00 às 16h55' }
+      ]
+    },
+    {
+      name: 'Dr. Anderson Maia',
+      crm: '26361',
+      specialties: ['Acupuntura', 'Dor'],
+      schedule: [
+        { day: 'Quarta-feira', hours: '08h00 às 11h30 e 14h30 às 17h00' },
+        { day: 'Sexta-feira', hours: '08h00 às 12h00 e 14h00 às 17h00' },
+        { day: 'Sábado', hours: '08h00 às 12h00' }
+      ]
+    },
+    {
+      name: 'Dra. Franciele Portela',
+      crm: '31512',
+      specialties: ['Fisiatria'],
+      schedule: [
+        { day: 'Quinta-feira', hours: '08h00 às 11h45' }
+      ]
+    },
+    {
+      name: 'Dr. José Renato',
+      crm: '9535',
+      specialties: ['Acupuntura', 'Ortopedia'],
+      schedule: [
+        { day: 'Quinta-feira', hours: '14h00 às 18h30' }
+      ]
+    },
+    {
+      name: 'Dra. Daniela Leony',
+      crm: '30697',
+      specialties: ['Acupuntura', 'Dor'],
+      schedule: [
+        { day: 'Sexta-feira', hours: '09h00 às 11h30' }
+      ]
+    },
+    {
+      name: 'Dr. Daniel Lariú',
+      crm: '16954',
+      specialties: ['Ortopedia'],
+      schedule: [
+        { day: 'Sexta-feira', hours: '13h30 às 16h30' }
+      ]
+    },
+    {
+      name: 'Dr. Lucas Moreira',
+      crm: '23629',
+      specialties: ['Geriatria', 'Acupuntura'],
+      schedule: [
+        { day: 'Quinta-feira', hours: '13h30 às 16h30' }
+      ]
+    },
+    {
+      name: 'Dr. Mário Augusto',
+      crm: '23299',
+      specialties: ['Acupuntura', 'Dor'],
+      schedule: [
+        { day: 'Quarta-feira', hours: '08h30 às 12h00' }
+      ]
+    },
+    {
+      name: 'Dr. Bernardo Dultra',
+      crm: '25043',
+      specialties: ['Reumatologia'],
+      schedule: [
+        { day: 'Terça-feira', hours: '07h30 às 11h50' }
+      ]
+    },
+    {
+      name: 'Dra. Stephanie Sampaio',
+      crm: 'CRO 19659',
+      specialties: ['Odontologia'],
+      schedule: [
+        { day: 'Segunda-feira', hours: '08h00 às 11h30' }
+      ]
+    },
+    {
+      name: 'Dr. Raymundo Netto',
+      crm: '24816',
+      specialties: ['Ortopedia', 'Traumatologia'],
+      schedule: [
+        { day: 'Quinta-feira', hours: '07h30 às 11h45' }
+      ]
+    }
+  ],
   'hangar-park': [],
   'comercio': [],
   'dual-medical': [],
