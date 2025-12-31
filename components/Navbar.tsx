@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, Search, ArrowRight, Loader2, Sparkles } from 'lucide-react';
+import { Menu, X, Search, ArrowRight, Loader2, Sparkles, AlertCircle } from 'lucide-react';
 import { GoogleGenAI } from "@google/genai";
 import { SPECIALTIES } from '../constants';
 
@@ -12,6 +12,7 @@ const Navbar: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearching, setIsSearching] = useState(false);
   const [searchResults, setSearchResults] = useState<{title: string, path: string, type: string}[]>([]);
+  const [searchError, setSearchError] = useState(false);
   
   const searchInputRef = useRef<HTMLInputElement>(null);
   const location = useLocation();
@@ -49,14 +50,17 @@ const Navbar: React.FC = () => {
     if (!searchQuery.trim()) return;
 
     setIsSearching(true);
+    setSearchError(false);
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+      
       const prompt = `Você é o assistente de navegação da Clínica Viterbo. 
       O usuário buscou por: "${searchQuery}". 
-      Identifique as páginas ou especialidades mais relevantes.
+      Identifique as páginas ou especialidades mais relevantes do site.
       Especialidades disponíveis: ${SPECIALTIES.map(s => s.name).join(', ')}.
       Páginas principais: Institucional (/institucional), Agendamento (/agendamento), Unidades (/unidades), Contato (/contato).
-      Retorne apenas um JSON (Array de objetos) no formato: [{"title": "Nome", "path": "/caminho", "type": "Categoria"}]`;
+      Retorne APENAS um JSON (Array de objetos) no formato: [{"title": "Nome", "path": "/caminho", "type": "Categoria"}]
+      Se não houver relação óbvia, tente sugerir a especialidade que trata sintomas relacionados.`;
 
       const response = await ai.models.generateContent({
         model: 'gemini-3-flash-preview',
@@ -68,7 +72,8 @@ const Navbar: React.FC = () => {
       setSearchResults(results);
     } catch (error) {
       console.error("Erro na busca:", error);
-      // Fallback simples
+      setSearchError(true);
+      // Fallback simples baseado em texto
       const fallback = SPECIALTIES
         .filter(s => s.name.toLowerCase().includes(searchQuery.toLowerCase()))
         .map(s => ({ title: s.name, path: `/especialidades/${s.slug}`, type: 'Especialidade' }));
@@ -94,7 +99,7 @@ const Navbar: React.FC = () => {
           <div className="flex justify-between items-center h-16">
             <div className="flex-shrink-0 flex items-center">
               <Link to="/" className="flex flex-col">
-                <span className="text-xl md:text-2xl font-serif font-bold text-emerald-900 leading-none">Clínica Viterbo</span>
+                <span className="text-xl md:text-2xl font-serif font-bold text-emerald-900 leading-none tracking-tight">Clínica Viterbo</span>
                 <span className="text-[9px] uppercase tracking-[0.2em] text-emerald-600 font-bold mt-1">Acupuntura & Clínica da Dor</span>
               </Link>
             </div>
@@ -175,13 +180,13 @@ const Navbar: React.FC = () => {
       {isSearchOpen && (
         <div className="fixed inset-0 z-[100] bg-emerald-950/98 backdrop-blur-lg animate-in fade-in duration-300">
           <button 
-            onClick={() => { setIsSearchOpen(false); setSearchResults([]); setSearchQuery(''); }}
-            className="absolute top-8 right-8 text-white/70 hover:text-white transition-colors"
+            onClick={() => { setIsSearchOpen(false); setSearchResults([]); setSearchQuery(''); setSearchError(false); }}
+            className="absolute top-8 right-8 text-white/70 hover:text-white transition-colors p-2"
           >
             <X size={40} />
           </button>
 
-          <div className="max-w-4xl mx-auto px-4 pt-32 h-full">
+          <div className="max-w-4xl mx-auto px-4 pt-32 h-full flex flex-col">
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-500/20 text-emerald-400 rounded-full text-[10px] font-bold uppercase tracking-widest mb-6 border border-emerald-500/30">
                 <Sparkles size={14} />
@@ -193,7 +198,7 @@ const Navbar: React.FC = () => {
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="O que você procura? (ex: acupuntura, dor na coluna...)"
+                  placeholder="O que você procura?"
                   className="w-full bg-transparent border-b-2 border-emerald-500/50 py-4 px-2 text-2xl md:text-4xl text-white outline-none placeholder:text-white/20 focus:border-emerald-500 transition-all"
                 />
                 <button 
@@ -204,25 +209,39 @@ const Navbar: React.FC = () => {
                   {isSearching ? <Loader2 size={32} className="animate-spin" /> : <ArrowRight size={32} />}
                 </button>
               </form>
+
+              {searchError && !process.env.API_KEY && (
+                <div className="mt-4 flex items-center justify-center gap-2 text-red-400 text-sm">
+                  <AlertCircle size={16} />
+                  <span>Configuração de API Key pendente no Vercel.</span>
+                </div>
+              )}
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[50vh] overflow-y-auto pr-2 custom-scrollbar">
-              {searchResults.map((res, i) => (
-                <button
-                  key={i}
-                  onClick={() => {
-                    setIsSearchOpen(false);
-                    navigate(res.path);
-                  }}
-                  className="flex items-center justify-between p-6 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 hover:border-emerald-500/50 transition-all text-left group"
-                >
-                  <div>
-                    <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-widest mb-1 block">{res.type}</span>
-                    <h4 className="text-xl font-bold text-white">{res.title}</h4>
-                  </div>
-                  <ArrowRight className="text-white/30 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all" />
-                </button>
-              ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-20 overflow-y-auto custom-scrollbar">
+              {searchResults.length > 0 ? (
+                searchResults.map((res, i) => (
+                  <button
+                    key={i}
+                    onClick={() => {
+                      setIsSearchOpen(false);
+                      navigate(res.path);
+                    }}
+                    className="flex items-center justify-between p-6 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 hover:border-emerald-500/50 transition-all text-left group animate-in slide-in-from-bottom-2 duration-300"
+                    style={{ animationDelay: `${i * 50}ms` }}
+                  >
+                    <div>
+                      <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-widest mb-1 block">{res.type}</span>
+                      <h4 className="text-xl font-bold text-white">{res.title}</h4>
+                    </div>
+                    <ArrowRight className="text-white/30 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all" />
+                  </button>
+                ))
+              ) : searchQuery && !isSearching && (
+                <div className="col-span-full text-center text-white/40 pt-10">
+                  Nenhum resultado encontrado para sua busca.
+                </div>
+              )}
             </div>
           </div>
         </div>
