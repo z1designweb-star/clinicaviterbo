@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import Institutional from './pages/Institutional';
 import Booking from './pages/Booking';
 import Units from './pages/Units';
+import UnitDoctors from './pages/UnitDoctors';
 import Contact from './pages/Contact';
 
 // Specialty Pages
@@ -53,6 +54,7 @@ const App: React.FC = () => {
             <Route path="/institucional" element={<Institutional />} />
             <Route path="/agendamento" element={<Booking />} />
             <Route path="/unidades" element={<Units />} />
+            <Route path="/unidades/:unitSlug/medicos" element={<UnitDoctors />} />
             <Route path="/contato" element={<Contact />} />
             
             {/* Specialty Routes */}
