@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { 
   Stethoscope, 
@@ -571,7 +570,89 @@ export const UNIT_DOCTORS: Record<string, Doctor[]> = {
       ]
     }
   ],
-  'dual-medical': [],
+  'dual-medical': [
+    {
+      name: 'Dr. Anderson Maia',
+      crm: '26361',
+      specialties: ['Acupuntura', 'Dor'],
+      schedule: [{ day: 'Segunda-feira', hours: '08h00 às 11h30' }]
+    },
+    {
+      name: 'Dr. Ilano Rebello',
+      crm: '15583',
+      specialties: ['Acupuntura', 'Dor'],
+      schedule: [
+        { day: 'Terça-feira', hours: '08h30 às 11h15' },
+        { day: 'Quinta-feira', hours: '08h30 às 11h15' }
+      ]
+    },
+    {
+      name: 'Dra. Cristina Peres',
+      crm: '22497',
+      specialties: ['Acupuntura', 'Dor'],
+      schedule: [{ day: 'Terça-feira', hours: '08h00 às 11h30' }]
+    },
+    {
+      name: 'Dr. Felipe Caldas',
+      crm: '36959',
+      specialties: ['Acupuntura', 'Dor'],
+      schedule: [{ day: 'Sexta-feira', hours: '08h00 às 11h30' }]
+    },
+    {
+      name: 'Dra. Leonor Fernandes',
+      crm: '16961',
+      specialties: ['Endocrinologia', 'Acupuntura'],
+      schedule: [{ day: 'Terça-feira', hours: '14h00 às 17h00' }]
+    },
+    {
+      name: 'Dr. Wen Shih Yu',
+      crm: '11013',
+      specialties: ['Acupuntura'],
+      schedule: [
+        { day: 'Segunda-feira', hours: '13h30 às 18h00' },
+        { day: 'Quarta-feira', hours: '08h00 às 11h30 e 13h30 às 18h00' }
+      ]
+    },
+    {
+      name: 'Dr. Mário Augusto',
+      crm: '23299',
+      specialties: ['Acupuntura', 'Dor'],
+      schedule: [
+        { day: 'Quinta-feira', hours: '14h00 às 18h00' },
+        { day: 'Sábado', hours: '08h30 às 12h00' }
+      ]
+    },
+    {
+      name: 'Dr. Jorge Joji',
+      crm: '19272',
+      specialties: ['Acupuntura'],
+      schedule: [{ day: 'Sexta-feira', hours: '08h00 às 12h00 e 14h00 às 18h00' }]
+    },
+    {
+      name: 'Dra. Jonélia Cirqueira',
+      crm: '12806',
+      specialties: ['Acupuntura'],
+      schedule: [
+        { day: 'Terça-feira', hours: '14h00 às 17h00' },
+        { day: 'Sexta-feira', hours: '14h00 às 17h00' }
+      ]
+    },
+    {
+      name: 'Dr. Danilo Cerqueira',
+      crm: '33097',
+      specialties: ['Ortopedia', 'Clínica da Dor'],
+      schedule: [{ day: 'Quinta-feira', hours: '14h30 às 17h10' }]
+    },
+    {
+      name: 'Dr. Cleiton Grabner',
+      crm: '22167',
+      specialties: [],
+      schedule: [
+        { day: 'Quinta-feira', hours: '08h00 às 12h00' },
+        { day: 'Sábado', hours: '08h00 às 11h30' }
+      ]
+    }
+  ],
 };
 
 export const INSURANCES = [
