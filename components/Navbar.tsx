@@ -34,6 +34,7 @@ const Navbar: React.FC = () => {
   const navLinks = [
     { label: 'Início', path: '/' },
     { label: 'Institucional', path: '/institucional' },
+    { label: 'Nossos Médicos', path: '/medicos' },
     { label: 'Agende', path: '/agendamento' },
     { label: 'Especialidades', path: '/#especialidades', isAnchor: true, target: 'especialidades' },
     { label: 'Convênios', path: '/#convenios', isAnchor: true, target: 'convenios' },

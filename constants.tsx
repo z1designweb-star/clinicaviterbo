@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { 
   Stethoscope, 
@@ -654,6 +655,16 @@ export const UNIT_DOCTORS: Record<string, Doctor[]> = {
     }
   ],
 };
+
+// Helper para obter todos os médicos de todas as unidades
+export const ALL_DOCTORS = Object.entries(UNIT_DOCTORS).flatMap(([unitSlug, doctors]) => 
+  doctors.map(doc => ({ ...doc, unitSlug }))
+);
+
+// Helper para obter lista única de especialidades de todos os médicos
+export const UNIQUE_DOCTOR_SPECIALTIES = Array.from(
+  new Set(ALL_DOCTORS.flatMap(doc => doc.specialties))
+).sort();
 
 export const INSURANCES = [
   'Amil', 'Apub', 'Asfeb', 'Asseba', 'Assefaz', 'Asteba', 'AtitudeSaúde', 'BCSaúde', 

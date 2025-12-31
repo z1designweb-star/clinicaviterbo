@@ -1,13 +1,34 @@
 
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ChevronLeft, Calendar, User, Clock, Stethoscope, MapPin, MessageCircle, Sparkles } from 'lucide-react';
-import { UNITS, UNIT_DOCTORS } from '../constants';
+import { ChevronLeft, Calendar, User, Clock, Stethoscope, MapPin, MessageCircle, Sparkles, Search, XCircle } from 'lucide-react';
+import { UNITS, UNIT_DOCTORS, CONTACT_INFO } from '../constants';
 
 const UnitDoctors: React.FC = () => {
   const { unitSlug } = useParams<{ unitSlug: string }>();
   const unit = UNITS.find(u => u.slug === unitSlug);
-  const doctors = unitSlug ? UNIT_DOCTORS[unitSlug] : [];
+  const rawDoctors = unitSlug ? UNIT_DOCTORS[unitSlug] : [];
+
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedSpecialty, setSelectedSpecialty] = useState('');
+
+  // Extrair especialidades únicas desta unidade para o filtro
+  const availableSpecialties = useMemo(() => {
+    return Array.from(new Set(rawDoctors.flatMap(doc => doc.specialties))).sort();
+  }, [rawDoctors]);
+
+  const filteredDoctors = useMemo(() => {
+    return rawDoctors.filter(doc => {
+      const matchesSearch = doc.name.toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesSpecialty = selectedSpecialty === '' || doc.specialties.includes(selectedSpecialty);
+      return matchesSearch && matchesSpecialty;
+    });
+  }, [rawDoctors, searchTerm, selectedSpecialty]);
+
+  const getWhatsAppLink = (doctorName: string) => {
+    const message = encodeURIComponent(`Olá, gostaria de agendar uma consulta com o(a) ${doctorName} na unidade ${unit?.name}.`);
+    return `https://wa.me/55${CONTACT_INFO.whatsapp.replace(/\D/g, '')}?text=${message}`;
+  };
 
   if (!unit) {
     return (
@@ -48,17 +69,66 @@ const UnitDoctors: React.FC = () => {
             <div className="hidden md:block">
                <div className="flex items-center gap-2 px-4 py-2 bg-emerald-100/50 text-emerald-700 rounded-full text-xs font-bold border border-emerald-200">
                  <Sparkles size={14} className="text-emerald-500" />
-                 {doctors.length} Especialistas Disponíveis
+                 {rawDoctors.length} Especialistas Disponíveis
                </div>
             </div>
           </div>
         </div>
 
-        {doctors && doctors.length > 0 ? (
+        {/* Filters Section */}
+        <div className="bg-white rounded-3xl shadow-lg shadow-emerald-900/5 p-5 md:p-6 border border-emerald-100 mb-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Search Filter */}
+            <div className="relative">
+              <p className="text-[10px] font-black text-emerald-600/60 uppercase tracking-widest mb-2 px-1">Filtrar por Especialista</p>
+              <div className="relative">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-emerald-400" size={18} />
+                <input 
+                  type="text"
+                  placeholder="Pesquisar por nome..."
+                  className="w-full pl-12 pr-4 py-3 rounded-2xl bg-emerald-50/30 border border-emerald-100 focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 outline-none transition-all text-sm font-medium"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
+              </div>
+            </div>
+
+            {/* Specialty Filter */}
+            <div>
+              <p className="text-[10px] font-black text-emerald-600/60 uppercase tracking-widest mb-2 px-1">Filtrar por Especialidade</p>
+              <div className="relative">
+                <Stethoscope className="absolute left-4 top-1/2 -translate-y-1/2 text-emerald-400" size={18} />
+                <select 
+                  className="w-full pl-12 pr-4 py-3 rounded-2xl bg-emerald-50/30 border border-emerald-100 focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 outline-none transition-all text-sm font-medium appearance-none"
+                  value={selectedSpecialty}
+                  onChange={(e) => setSelectedSpecialty(e.target.value)}
+                >
+                  <option value="">Todas as Especialidades</option>
+                  {availableSpecialties.map(spec => (
+                    <option key={spec} value={spec}>{spec}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+          </div>
+          
+          {(searchTerm || selectedSpecialty) && (
+            <div className="mt-4 flex justify-end">
+              <button 
+                onClick={() => {setSearchTerm(''); setSelectedSpecialty('');}}
+                className="flex items-center gap-2 text-[10px] font-bold text-red-500 uppercase tracking-widest hover:text-red-700 transition-colors"
+              >
+                <XCircle size={14} />
+                Limpar filtros
+              </button>
+            </div>
+          )}
+        </div>
+
+        {filteredDoctors && filteredDoctors.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {doctors.map((doc, idx) => (
+            {filteredDoctors.map((doc, idx) => (
               <div key={idx} className="bg-white rounded-[2rem] shadow-sm border border-emerald-100 hover:shadow-2xl hover:shadow-emerald-900/10 transition-all duration-500 flex flex-col group overflow-hidden relative">
-                {/* Decorative Top Accent */}
                 <div className="h-2 w-full bg-gradient-to-r from-emerald-500 via-teal-400 to-emerald-600" />
                 
                 <div className="p-8 flex flex-col h-full">
@@ -116,13 +186,15 @@ const UnitDoctors: React.FC = () => {
                   </div>
 
                   <div className="mt-auto">
-                    <Link 
-                      to="/agendamento"
+                    <a 
+                      href={getWhatsAppLink(doc.name)}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex items-center justify-center gap-3 w-full py-4.5 bg-emerald-600 text-white font-black rounded-2xl hover:bg-emerald-700 transition-all duration-300 shadow-xl shadow-emerald-200 group-hover:scale-[1.03] active:scale-95 py-4"
                     >
-                      <Calendar size={20} className="fill-white/20" />
-                      Agende sua Consulta
-                    </Link>
+                      <MessageCircle size={20} className="fill-white/20" />
+                      Agendamento Otimizado
+                    </a>
                   </div>
                 </div>
               </div>
@@ -131,14 +203,16 @@ const UnitDoctors: React.FC = () => {
         ) : (
           <div className="bg-emerald-50 rounded-[3rem] p-16 text-center border-2 border-dashed border-emerald-200">
             <div className="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Calendar size={40} />
+              <Search size={40} />
             </div>
-            <h3 className="text-2xl font-serif font-bold text-emerald-900 mb-4">Agenda em Atualização</h3>
-            <p className="text-emerald-800/70 font-medium italic max-w-md mx-auto mb-10">Estamos otimizando as escalas de atendimento desta unidade. Você pode consultar horários em tempo real através da nossa central.</p>
-            <Link to="/agendamento" className="inline-flex items-center gap-3 px-10 py-4 bg-emerald-600 text-white rounded-full font-bold hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-200">
-              <MessageCircle size={20} />
-              Falar com Central WhatsApp
-            </Link>
+            <h3 className="text-2xl font-serif font-bold text-emerald-900 mb-4">Nenhum resultado</h3>
+            <p className="text-emerald-800/70 font-medium italic max-w-md mx-auto mb-10">Não encontramos especialistas que correspondam aos seus filtros nesta unidade.</p>
+            <button 
+              onClick={() => {setSearchTerm(''); setSelectedSpecialty('');}}
+              className="inline-flex items-center gap-3 px-10 py-4 bg-emerald-600 text-white rounded-full font-bold hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-200"
+            >
+              Resetar Filtros
+            </button>
           </div>
         )}
       </div>
