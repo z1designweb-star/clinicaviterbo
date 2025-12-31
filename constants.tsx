@@ -436,7 +436,71 @@ export const UNIT_DOCTORS: Record<string, Doctor[]> = {
     }
   ],
   'hangar-park': [],
-  'comercio': [],
+  'comercio': [
+    {
+      name: 'Dr. Walter Viterbo',
+      crm: '11188',
+      specialties: ['Acupuntura', 'Dor'],
+      schedule: [
+        { day: 'Segunda-feira', hours: '09h00 às 12h00' },
+        { day: 'Quarta-feira', hours: '09h00 às 12h00' }
+      ]
+    },
+    {
+      name: 'Dr. Jorge Joji',
+      crm: '19272',
+      specialties: ['Acupuntura'],
+      schedule: [
+        { day: 'Segunda-feira', hours: '08h00 às 12h30 e 14h00 às 17h00' },
+        { day: 'Quarta-feira', hours: '13h30 às 17h00' }
+      ]
+    },
+    {
+      name: 'Dra. Aline Oquendo',
+      crm: '15800',
+      specialties: ['Acupuntura'],
+      schedule: [
+        { day: 'Quarta-feira', hours: '08h30 às 12h00 e 13h30 às 16h00' },
+        { day: 'Sábado', hours: '08h00 às 11h40' }
+      ]
+    },
+    {
+      name: 'Dra. Ticiana Vilar',
+      crm: '24950',
+      specialties: ['Acupuntura', 'Dor'],
+      schedule: [
+        { day: 'Terça-feira', hours: '09h00 às 13h00' },
+        { day: 'Sexta-feira', hours: '08h30 às 12h00' }
+      ]
+    },
+    {
+      name: 'Dra. Lia Tércia',
+      crm: '19891',
+      specialties: ['Acupuntura', 'Dor'],
+      schedule: [
+        { day: 'Terça-feira', hours: '09h00 às 12h00 e 14h00 às 16h20' },
+        { day: 'Quinta-feira', hours: '09h00 às 12h00 e 14h00 às 16h20' }
+      ]
+    },
+    {
+      name: 'Dra. Manuela Diana',
+      crm: '25095',
+      specialties: ['Acupuntura', 'Dor'],
+      schedule: [
+        { day: 'Sexta-feira', hours: '08h30 às 11h30' }
+      ]
+    },
+    {
+      name: 'Dr. Mário Augusto',
+      crm: '23299',
+      specialties: ['Acupuntura', 'Dor'],
+      schedule: [
+        { day: 'Segunda-feira', hours: '13h30 às 17h00' },
+        { day: 'Quinta-feira', hours: '08h30 às 12h00' },
+        { day: 'Sexta-feira', hours: '13h30 às 17h00' }
+      ]
+    }
+  ],
   'dual-medical': [],
 };
 
