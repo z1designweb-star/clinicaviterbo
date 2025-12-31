@@ -1,10 +1,14 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Instagram, Facebook, MessageCircle, Mail, Phone, MapPin } from 'lucide-react';
+import { Instagram, Facebook, MessageCircle, Mail, Phone, MapPin, Zap, AlertTriangle } from 'lucide-react';
 import { CONTACT_INFO } from '../constants';
 
 const Footer: React.FC = () => {
+  const apiKey = process.env.API_KEY || '';
+  const isApiConnected = apiKey.length > 0;
+  const apiKeySuffix = isApiConnected ? apiKey.slice(-4) : '----';
+
   return (
     <footer className="bg-slate-900 text-white pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -84,8 +88,39 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="border-t border-slate-800 pt-8 text-center text-slate-500 text-xs">
-          <p>&copy; {new Date().getFullYear()} Clínica Viterbo. Todos os direitos reservados. Responsável Técnico: Dr. Walter Viterbo (CRM 11188-BA).</p>
+        {/* API Status Section */}
+        <div className="border-t border-slate-800 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-3 bg-slate-800/50 px-4 py-2 rounded-full border border-slate-700">
+            {isApiConnected ? (
+              <>
+                <div className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Zap size={14} className="text-emerald-400 fill-emerald-400" />
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-400">API Conectada</span>
+                  <span className="text-[10px] text-slate-500 font-mono">ID: ****{apiKeySuffix}</span>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="h-3 w-3 rounded-full bg-red-500"></div>
+                <div className="flex items-center gap-2">
+                  <AlertTriangle size={14} className="text-red-400" />
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-red-400">IA Offline (Configurar Vercel)</span>
+                </div>
+              </>
+            )}
+          </div>
+          
+          <div className="text-slate-500 text-[10px] text-center md:text-right font-medium uppercase tracking-wider">
+            Responsável Técnico: Dr. Walter Viterbo (CRM 11188-BA)
+          </div>
+        </div>
+
+        <div className="border-t border-slate-800 pt-8 text-center text-slate-600 text-[10px] uppercase tracking-widest">
+          <p>&copy; {new Date().getFullYear()} Clínica Viterbo. Todos os direitos reservados.</p>
         </div>
       </div>
     </footer>
