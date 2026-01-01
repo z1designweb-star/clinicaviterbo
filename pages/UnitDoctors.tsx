@@ -1,7 +1,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ChevronLeft, Calendar, User, Clock, Stethoscope, MapPin, MessageCircle, Sparkles, Search, XCircle } from 'lucide-react';
+import { ChevronLeft, User, Clock, Stethoscope, MapPin, MessageCircle, Sparkles, Search, XCircle } from 'lucide-react';
 import { UNITS, UNIT_DOCTORS, CONTACT_INFO } from '../constants';
 
 const UnitDoctors: React.FC = () => {
@@ -12,7 +12,6 @@ const UnitDoctors: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedSpecialty, setSelectedSpecialty] = useState('');
 
-  // Extrair especialidades únicas desta unidade para o filtro
   const availableSpecialties = useMemo(() => {
     return Array.from(new Set(rawDoctors.flatMap(doc => doc.specialties))).sort();
   }, [rawDoctors]);
@@ -30,189 +29,102 @@ const UnitDoctors: React.FC = () => {
     return `https://wa.me/55${CONTACT_INFO.whatsapp.replace(/\D/g, '')}?text=${message}`;
   };
 
-  if (!unit) {
-    return (
-      <div className="pt-48 pb-20 text-center">
-        <h1 className="text-2xl font-bold text-gray-900">Unidade não encontrada.</h1>
-        <Link to="/unidades" className="text-emerald-600 hover:underline mt-4 inline-block">Voltar para Unidades</Link>
-      </div>
-    );
-  }
+  if (!unit) return null;
 
   return (
-    <div className="pt-36 pb-20 bg-gray-50/50 min-h-screen">
+    <div className="pt-32 pb-20 bg-gray-50/30 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Link 
-          to="/unidades" 
-          className="inline-flex items-center text-emerald-600 font-bold mb-8 hover:text-emerald-800 transition-all group"
-        >
-          <div className="p-1 bg-emerald-50 rounded-lg mr-2 group-hover:bg-emerald-100 transition-colors">
-            <ChevronLeft size={20} />
-          </div>
+        <Link to="/unidades" className="inline-flex items-center text-emerald-600 text-xs font-bold mb-8 hover:text-emerald-800 transition-all">
+          <ChevronLeft size={16} className="mr-1" />
           Voltar para Unidades
         </Link>
 
-        <div className="mb-12">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <div>
-              <h1 className="text-4xl md:text-5xl font-serif font-bold text-emerald-900 mb-4">{unit.name}</h1>
-              <div className="flex items-start gap-3 bg-white p-4 rounded-2xl border border-emerald-100 shadow-sm max-w-2xl">
-                <div className="w-10 h-10 bg-emerald-600 rounded-xl flex items-center justify-center shrink-0 text-white shadow-lg shadow-emerald-200">
-                  <MapPin size={20} />
-                </div>
-                <div>
-                  <p className="text-[10px] font-bold text-emerald-600/60 uppercase tracking-widest mb-1">Endereço da Unidade</p>
-                  <p className="text-sm text-gray-700 leading-relaxed font-semibold">{unit.address}</p>
-                </div>
-              </div>
+        <div className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="max-w-2xl">
+            <h1 className="text-3xl md:text-4xl font-serif font-bold text-emerald-950 mb-3 tracking-tight">{unit.name}</h1>
+            <div className="flex items-center gap-2 text-gray-500">
+              <MapPin size={14} className="text-emerald-500" />
+              <p className="text-sm font-medium">{unit.address}</p>
             </div>
-            <div className="hidden md:block">
-               <div className="flex items-center gap-2 px-4 py-2 bg-emerald-100/50 text-emerald-700 rounded-full text-xs font-bold border border-emerald-200">
-                 <Sparkles size={14} className="text-emerald-500" />
-                 {rawDoctors.length} Especialistas Disponíveis
-               </div>
-            </div>
+          </div>
+          <div className="px-4 py-1.5 bg-white border border-emerald-100 rounded-full text-[10px] font-bold text-emerald-700 uppercase tracking-widest shadow-sm">
+            {rawDoctors.length} Médicos nesta unidade
           </div>
         </div>
 
-        {/* Filters Section */}
-        <div className="bg-white rounded-3xl shadow-lg shadow-emerald-900/5 p-5 md:p-6 border border-emerald-100 mb-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Search Filter */}
-            <div className="relative">
-              <p className="text-[10px] font-black text-emerald-600/60 uppercase tracking-widest mb-2 px-1">Filtrar por Especialista</p>
-              <div className="relative">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-emerald-400" size={18} />
-                <input 
-                  type="text"
-                  placeholder="Pesquisar por nome..."
-                  className="w-full pl-12 pr-4 py-3 rounded-2xl bg-emerald-50/30 border border-emerald-100 focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 outline-none transition-all text-sm font-medium"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-              </div>
-            </div>
-
-            {/* Specialty Filter */}
-            <div>
-              <p className="text-[10px] font-black text-emerald-600/60 uppercase tracking-widest mb-2 px-1">Filtrar por Especialidade</p>
-              <div className="relative">
-                <Stethoscope className="absolute left-4 top-1/2 -translate-y-1/2 text-emerald-400" size={18} />
-                <select 
-                  className="w-full pl-12 pr-4 py-3 rounded-2xl bg-emerald-50/30 border border-emerald-100 focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 outline-none transition-all text-sm font-medium appearance-none"
-                  value={selectedSpecialty}
-                  onChange={(e) => setSelectedSpecialty(e.target.value)}
-                >
-                  <option value="">Todas as Especialidades</option>
-                  {availableSpecialties.map(spec => (
-                    <option key={spec} value={spec}>{spec}</option>
-                  ))}
-                </select>
-              </div>
-            </div>
+        {/* Search Filter - Compact */}
+        <div className="bg-white rounded-2xl border border-gray-100 p-4 mb-10 shadow-sm flex flex-col md:flex-row gap-4">
+          <div className="relative flex-grow">
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-300" size={16} />
+            <input 
+              type="text"
+              placeholder="Pesquisar por nome..."
+              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-gray-50 border border-gray-100 focus:bg-white focus:border-emerald-300 outline-none transition-all text-sm"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
           </div>
-          
-          {(searchTerm || selectedSpecialty) && (
-            <div className="mt-4 flex justify-end">
-              <button 
-                onClick={() => {setSearchTerm(''); setSelectedSpecialty('');}}
-                className="flex items-center gap-2 text-[10px] font-bold text-red-500 uppercase tracking-widest hover:text-red-700 transition-colors"
-              >
-                <XCircle size={14} />
-                Limpar filtros
-              </button>
-            </div>
-          )}
+          <select 
+            className="px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-100 focus:bg-white focus:border-emerald-300 outline-none transition-all text-sm text-gray-600 appearance-none min-w-[200px]"
+            value={selectedSpecialty}
+            onChange={(e) => setSelectedSpecialty(e.target.value)}
+          >
+            <option value="">Todas Especialidades</option>
+            {availableSpecialties.map(spec => (
+              <option key={spec} value={spec}>{spec}</option>
+            ))}
+          </select>
         </div>
 
-        {filteredDoctors && filteredDoctors.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {filteredDoctors.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredDoctors.map((doc, idx) => (
-              <div key={idx} className="bg-white rounded-[2rem] shadow-sm border border-emerald-100 hover:shadow-2xl hover:shadow-emerald-900/10 transition-all duration-500 flex flex-col group overflow-hidden relative">
-                <div className="h-2 w-full bg-gradient-to-r from-emerald-500 via-teal-400 to-emerald-600" />
-                
-                <div className="p-8 flex flex-col h-full">
-                  <div className="flex items-center gap-5 mb-8">
-                    <div className="relative">
-                      <div className="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500 shadow-inner">
-                        <User size={32} />
-                      </div>
-                      <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-emerald-500 rounded-lg flex items-center justify-center border-2 border-white text-white">
-                        <Sparkles size={10} />
-                      </div>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-extrabold text-emerald-950 leading-tight group-hover:text-emerald-600 transition-colors">{doc.name}</h3>
-                      <div className="inline-flex mt-1 px-2 py-0.5 bg-emerald-50 text-[10px] font-black text-emerald-700 rounded uppercase tracking-tighter border border-emerald-200">
-                        CRM {doc.crm}
-                      </div>
-                    </div>
+              <div key={idx} className="bg-white rounded-2xl border border-gray-100 hover:border-emerald-200 hover:shadow-xl hover:shadow-emerald-900/5 transition-all p-6 flex flex-col group">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center shrink-0">
+                    <User size={24} />
                   </div>
-
-                  <div className="mb-6">
-                    <p className="text-[10px] font-bold text-emerald-600/40 uppercase tracking-widest mb-3 flex items-center gap-1.5">
-                      <Stethoscope size={14} className="text-emerald-500" />
-                      Especialidades
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {doc.specialties.length > 0 ? (
-                        doc.specialties.map((spec, sIdx) => (
-                          <span key={sIdx} className="px-3 py-1.5 bg-emerald-50/50 text-emerald-800 text-[11px] font-bold rounded-xl border border-emerald-100 group-hover:bg-emerald-100 transition-colors">
-                            {spec}
-                          </span>
-                        ))
-                      ) : (
-                        <span className="text-xs text-gray-400 italic">Especialidade não informada</span>
-                      )}
-                    </div>
+                  <div className="min-w-0">
+                    <h3 className="text-lg font-bold text-emerald-950 truncate">{doc.name}</h3>
+                    <p className="text-[10px] font-black text-emerald-600/40 uppercase tracking-wider">CRM {doc.crm}</p>
                   </div>
+                </div>
 
-                  <div className="mb-8 flex-grow p-5 bg-emerald-50/30 rounded-2xl border border-emerald-100/50">
-                    <p className="text-[10px] font-bold text-emerald-600/40 uppercase tracking-widest mb-4 flex items-center gap-1.5">
-                      <Clock size={14} className="text-emerald-500" />
-                      Disponibilidade
-                    </p>
-                    <div className="space-y-4">
-                      {doc.schedule.map((sch, schIdx) => (
-                        <div key={schIdx} className="flex items-start gap-3">
-                          <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full mt-1.5 shadow-sm" />
-                          <div className="flex flex-col">
-                            <span className="text-[11px] font-black text-emerald-900 uppercase tracking-tight">{sch.day}</span>
-                            <span className="text-xs text-emerald-700/70 font-medium">{sch.hours}</span>
-                          </div>
-                        </div>
+                <div className="space-y-4 mb-8 flex-grow">
+                  <div>
+                    <div className="flex flex-wrap gap-1.5">
+                      {doc.specialties.map((spec, sIdx) => (
+                        <span key={sIdx} className="px-2 py-0.5 bg-emerald-50 text-emerald-700 text-[10px] font-bold rounded-md">
+                          {spec}
+                        </span>
                       ))}
                     </div>
                   </div>
-
-                  <div className="mt-auto">
-                    <a 
-                      href={getWhatsAppLink(doc.name)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-3 w-full py-4.5 bg-emerald-600 text-white font-black rounded-2xl hover:bg-emerald-700 transition-all duration-300 shadow-xl shadow-emerald-200 group-hover:scale-[1.03] active:scale-95 py-4"
-                    >
-                      <MessageCircle size={20} className="fill-white/20" />
-                      Agendamento Otimizado
-                    </a>
+                  <div className="p-3 bg-gray-50 rounded-xl space-y-2">
+                    {doc.schedule.map((sch, schIdx) => (
+                      <div key={schIdx} className="flex justify-between text-[11px]">
+                        <span className="font-bold text-gray-500 uppercase">{sch.day}</span>
+                        <span className="text-gray-400">{sch.hours}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
+
+                <a 
+                  href={getWhatsAppLink(doc.name)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 w-full py-3 bg-emerald-700 text-white text-xs font-black rounded-xl hover:bg-emerald-800 transition-all active:scale-95"
+                >
+                  <MessageCircle size={16} />
+                  Agendar com Especialista
+                </a>
               </div>
             ))}
           </div>
         ) : (
-          <div className="bg-emerald-50 rounded-[3rem] p-16 text-center border-2 border-dashed border-emerald-200">
-            <div className="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Search size={40} />
-            </div>
-            <h3 className="text-2xl font-serif font-bold text-emerald-900 mb-4">Nenhum resultado</h3>
-            <p className="text-emerald-800/70 font-medium italic max-w-md mx-auto mb-10">Não encontramos especialistas que correspondam aos seus filtros nesta unidade.</p>
-            <button 
-              onClick={() => {setSearchTerm(''); setSelectedSpecialty('');}}
-              className="inline-flex items-center gap-3 px-10 py-4 bg-emerald-600 text-white rounded-full font-bold hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-200"
-            >
-              Resetar Filtros
-            </button>
+          <div className="text-center py-20 bg-white rounded-3xl border border-dashed border-gray-200">
+             <p className="text-gray-400 italic">Nenhum especialista encontrado com os filtros aplicados.</p>
           </div>
         )}
       </div>

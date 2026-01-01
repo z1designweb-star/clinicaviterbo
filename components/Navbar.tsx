@@ -45,15 +45,15 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <nav className={`fixed w-full z-50 transition-all duration-300 bg-white shadow-md ${isScrolled ? 'py-2' : 'py-3'}`}>
+      <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-1' : 'bg-transparent py-4'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center h-14 md:h-16">
             <div className="flex-shrink-0 flex items-center">
-              <Link to="/" className="flex items-center gap-3">
-                <img src={CLINIC_LOGO} alt="Clínica Viterbo" className="h-10 w-auto object-contain" />
-                <div className="flex flex-col border-l border-emerald-100 pl-3">
-                  <span className="text-lg md:text-xl font-serif font-bold text-emerald-900 leading-none tracking-tight">Clínica Viterbo</span>
-                  <span className="text-[7px] uppercase tracking-[0.2em] text-emerald-600 font-bold mt-1">Acupuntura & Clínica da Dor</span>
+              <Link to="/" className="flex items-center gap-2">
+                <img src={CLINIC_LOGO} alt="Clínica Viterbo" className="h-8 md:h-10 w-auto object-contain" />
+                <div className="flex flex-col border-l border-emerald-200/50 pl-2">
+                  <span className={`text-base md:text-lg font-serif font-bold transition-colors ${isScrolled ? 'text-emerald-950' : 'text-emerald-900'}`}>Clínica Viterbo</span>
+                  <span className="text-[6px] uppercase tracking-[0.2em] text-emerald-600 font-bold">Acupuntura & Clínica da Dor</span>
                 </div>
               </Link>
             </div>
@@ -65,7 +65,7 @@ const Navbar: React.FC = () => {
                     key={link.label}
                     href={link.path}
                     onClick={(e) => handleAnchorClick(e, link.target!)}
-                    className="px-3 py-2 rounded-lg text-sm font-bold text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 transition-all"
+                    className="px-3 py-1.5 rounded-lg text-xs font-bold text-gray-700 hover:text-emerald-600 transition-all uppercase tracking-wider"
                   >
                     {link.label}
                   </a>
@@ -73,7 +73,7 @@ const Navbar: React.FC = () => {
                   <Link
                     key={link.label}
                     to={link.path}
-                    className="px-3 py-2 rounded-lg text-sm font-bold text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 transition-all"
+                    className="px-3 py-1.5 rounded-lg text-xs font-bold text-gray-700 hover:text-emerald-600 transition-all uppercase tracking-wider"
                   >
                     {link.label}
                   </Link>
@@ -81,12 +81,12 @@ const Navbar: React.FC = () => {
               ))}
             </div>
 
-            <div className="lg:hidden flex items-center gap-2">
+            <div className="lg:hidden flex items-center">
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="p-2 rounded-md text-emerald-900 hover:bg-emerald-50 transition-colors"
               >
-                {isOpen ? <X size={28} /> : <Menu size={28} />}
+                {isOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
             </div>
           </div>
@@ -94,14 +94,14 @@ const Navbar: React.FC = () => {
 
         {isOpen && (
           <div className="lg:hidden bg-white shadow-xl absolute w-full left-0 border-t border-gray-100 animate-in slide-in-from-top-2 duration-200">
-            <div className="px-2 pt-2 pb-6 space-y-1 sm:px-3">
+            <div className="px-4 pt-2 pb-6 space-y-1">
               {navLinks.map((link) => (
                 link.isAnchor ? (
                   <a
                     key={link.label}
                     href={link.path}
                     onClick={(e) => handleAnchorClick(e, link.target!)}
-                    className="block px-4 py-3 rounded-xl text-base font-bold text-gray-800 hover:text-emerald-600 hover:bg-emerald-50 transition-all"
+                    className="block px-4 py-3 rounded-xl text-sm font-bold text-gray-800 hover:text-emerald-600 hover:bg-emerald-50 transition-all"
                   >
                     {link.label}
                   </a>
@@ -110,7 +110,7 @@ const Navbar: React.FC = () => {
                     key={link.label}
                     to={link.path}
                     onClick={() => setIsOpen(false)}
-                    className="block px-4 py-3 rounded-xl text-base font-bold text-gray-800 hover:text-emerald-600 hover:bg-emerald-50 transition-all"
+                    className="block px-4 py-3 rounded-xl text-sm font-bold text-gray-800 hover:text-emerald-600 hover:bg-emerald-50 transition-all"
                   >
                     {link.label}
                   </Link>

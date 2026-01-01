@@ -8,59 +8,59 @@ const Home: React.FC = () => {
   return (
     <div className="flex flex-col">
       {/* Hero Section / Presentation */}
-      <section className="relative min-h-screen flex items-center bg-gray-50 overflow-hidden">
+      <section className="relative min-h-[90vh] flex items-center bg-white overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=1920" 
             alt="Medical background" 
-            className="w-full h-full object-cover opacity-20"
+            className="w-full h-full object-cover opacity-[0.07]"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-emerald-50/20 via-transparent to-white"></div>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-40 pb-24 md:py-32 lg:py-48">
-          <div className="max-w-2xl">
-            <div className="mb-8 animate-in fade-in slide-in-from-left-4 duration-1000">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+          <div className="max-w-3xl">
+            <div className="mb-6 md:mb-10 animate-in fade-in slide-in-from-left-4 duration-1000">
               <img 
                 src={CLINIC_LOGO} 
                 alt="Logo Clínica Viterbo" 
-                className="w-32 md:w-48 h-auto object-contain drop-shadow-sm" 
+                className="w-24 md:w-36 h-auto object-contain opacity-90" 
               />
             </div>
-            <h1 className="text-4xl md:text-6xl font-serif font-bold text-emerald-900 leading-tight mb-6">
-              Sua saúde e alívio da dor são <span className="text-emerald-600">nossa prioridade.</span>
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-emerald-950 leading-[1.1] mb-6 tracking-tight">
+              Saúde e alívio da dor <br/><span className="text-emerald-600">com excelência médica.</span>
             </h1>
-            <p className="text-lg text-gray-600 mb-10 leading-relaxed">
-              A Clínica Viterbo é especialista em Acupuntura Médica e Clínica da Dor em Salvador e Lauro de Freitas. Com 6 unidades estrategicamente localizadas, oferecemos um atendimento humanizado e multidisciplinar para sua qualidade de vida.
+            <p className="text-base md:text-lg text-gray-600 mb-8 md:mb-10 leading-relaxed max-w-xl">
+              Referência em Acupuntura Médica e Clínica da Dor em Salvador e Lauro de Freitas. Atendimento multidisciplinar focado em sua qualidade de vida.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link 
                 to="/agendamento" 
-                className="inline-flex items-center justify-center px-8 py-4 bg-emerald-600 text-white font-semibold rounded-full hover:bg-emerald-700 transition-all shadow-lg hover:shadow-emerald-500/30"
+                className="inline-flex items-center justify-center px-8 py-3.5 bg-emerald-700 text-white text-sm font-bold rounded-xl hover:bg-emerald-800 transition-all shadow-lg shadow-emerald-700/10 active:scale-[0.98]"
               >
-                Agende sua Consulta
-                <ChevronRight className="ml-2 w-5 h-5" />
+                Agendar Consulta
+                <ChevronRight className="ml-1.5 w-4 h-4" />
               </Link>
               <Link 
                 to="/institucional" 
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-emerald-900 font-semibold rounded-full border-2 border-emerald-600 hover:bg-emerald-50 transition-all"
+                className="inline-flex items-center justify-center px-8 py-3.5 bg-white text-emerald-900 text-sm font-bold rounded-xl border border-emerald-200 hover:bg-emerald-50 transition-all"
               >
                 Conheça a Clínica
               </Link>
             </div>
 
-            <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-y-8 gap-x-8 border-t border-gray-200 pt-8">
-              <div className="flex flex-col items-center sm:items-start">
-                <p className="text-3xl font-bold text-emerald-900">6</p>
-                <p className="text-sm text-gray-500 uppercase tracking-widest font-medium">Unidades</p>
+            <div className="mt-12 md:mt-20 flex flex-wrap gap-x-12 gap-y-6 border-t border-emerald-100/50 pt-8">
+              <div>
+                <p className="text-2xl font-bold text-emerald-950">6</p>
+                <p className="text-[10px] text-emerald-600 uppercase tracking-widest font-black">Unidades</p>
               </div>
-              <div className="flex flex-col items-center sm:items-start">
-                <p className="text-3xl font-bold text-emerald-900">30+</p>
-                <p className="text-sm text-gray-500 uppercase tracking-widest font-medium">Convênios</p>
+              <div>
+                <p className="text-2xl font-bold text-emerald-950">30+</p>
+                <p className="text-[10px] text-emerald-600 uppercase tracking-widest font-black">Convênios</p>
               </div>
-              <div className="flex flex-col items-center sm:items-start">
-                <p className="text-3xl font-bold text-emerald-900">10+</p>
-                <p className="text-sm text-gray-500 uppercase tracking-widest font-medium">Especialidades</p>
+              <div>
+                <p className="text-2xl font-bold text-emerald-950">10+</p>
+                <p className="text-[10px] text-emerald-600 uppercase tracking-widest font-black">Especialidades</p>
               </div>
             </div>
           </div>
@@ -68,26 +68,25 @@ const Home: React.FC = () => {
       </section>
 
       {/* Specialties Section */}
-      <section id="especialidades" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="mb-16">
-            <h2 className="text-sm font-bold text-emerald-600 uppercase tracking-widest mb-3">Nossos Serviços</h2>
-            <h3 className="text-4xl font-serif font-bold text-gray-900">Especialidades Médicas</h3>
-            <div className="mt-4 w-20 h-1 bg-emerald-600 mx-auto rounded-full"></div>
-            <p className="mt-4 text-gray-500">Clique em uma especialidade para saber mais.</p>
+      <section id="especialidades" className="py-20 bg-gray-50/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-[10px] font-black text-emerald-600 uppercase tracking-[0.2em] mb-3">Nossos Serviços</h2>
+            <h3 className="text-3xl font-serif font-bold text-emerald-950">Especialidades Médicas</h3>
+            <div className="mt-3 w-12 h-0.5 bg-emerald-500 mx-auto rounded-full"></div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
             {SPECIALTIES.map((spec, index) => (
               <Link 
                 key={index} 
                 to={`/especialidades/${spec.slug}`}
-                className="p-8 bg-emerald-50 rounded-2xl border-2 border-emerald-200 hover:border-emerald-500 transition-all duration-300 group block"
+                className="p-6 bg-white rounded-2xl border border-emerald-100 hover:border-emerald-400 hover:shadow-xl hover:shadow-emerald-900/5 transition-all duration-300 group text-center"
               >
-                <div className="mb-6 inline-flex items-center justify-center w-16 h-16 bg-white text-emerald-600 rounded-xl border border-emerald-100 group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-300 shadow-sm">
-                  {spec.icon}
+                <div className="mb-4 inline-flex items-center justify-center w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl group-hover:bg-emerald-600 group-hover:text-white transition-all">
+                  {React.cloneElement(spec.icon as React.ReactElement, { size: 20 })}
                 </div>
-                <h4 className="text-lg font-bold text-gray-900 leading-tight group-hover:text-emerald-700 transition-colors">{spec.name}</h4>
+                <h4 className="text-sm font-bold text-emerald-950 group-hover:text-emerald-700 transition-colors leading-snug">{spec.name}</h4>
               </Link>
             ))}
           </div>
@@ -95,41 +94,39 @@ const Home: React.FC = () => {
       </section>
 
       {/* Convênios Section */}
-      <section id="convenios" className="py-24 bg-gray-50 overflow-hidden">
+      <section id="convenios" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-sm font-bold text-emerald-600 uppercase tracking-widest mb-3">Parcerias</h2>
-            <h3 className="text-4xl font-serif font-bold text-gray-900">Convênios Atendidos</h3>
-            <div className="mt-4 w-20 h-1 bg-emerald-600 mx-auto rounded-full"></div>
-            <p className="mt-6 text-gray-600 max-w-2xl mx-auto">
-              Trabalhamos com os principais planos de saúde do mercado para garantir o seu acesso ao melhor atendimento médico.
-            </p>
+          <div className="text-center mb-12">
+            <h2 className="text-[10px] font-black text-emerald-600 uppercase tracking-[0.2em] mb-3">Parcerias</h2>
+            <h3 className="text-3xl font-serif font-bold text-emerald-950">Convênios Atendidos</h3>
+            <div className="mt-3 w-12 h-0.5 bg-emerald-500 mx-auto rounded-full"></div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
             {INSURANCES.map((insurance, index) => (
               <InsuranceLogoCard key={index} insurance={insurance} />
             ))}
           </div>
           
-          <div className="mt-12 text-center">
-            <p className="text-gray-500 text-sm">
-              Não encontrou seu convênio? <Link to="/contato" className="text-emerald-600 font-semibold hover:underline">Consulte-nos sobre atendimentos particulares ou reembolsos.</Link>
+          <div className="mt-10 text-center">
+            <p className="text-gray-400 text-xs">
+              Consulte-nos sobre <Link to="/contato" className="text-emerald-600 font-bold hover:underline">atendimentos particulares ou reembolsos</Link>.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="py-20 bg-emerald-600">
-        <div className="max-w-4xl mx-auto px-4 text-center text-white">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">Pronto para começar seu tratamento?</h2>
-          <p className="text-xl text-emerald-100 mb-10">
-            Nossa equipe está preparada para agendar sua consulta na unidade mais próxima de você.
+      {/* Call to Action - Compact */}
+      <section className="py-16 bg-emerald-900 overflow-hidden relative">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-800 rounded-full -mr-32 -mt-32 opacity-20 blur-3xl"></div>
+        <div className="max-w-4xl mx-auto px-4 text-center text-white relative z-10">
+          <h2 className="text-2xl md:text-3xl font-serif font-bold mb-4">Pronto para começar seu tratamento?</h2>
+          <p className="text-base text-emerald-100/70 mb-8 max-w-xl mx-auto">
+            Agende sua consulta na unidade mais próxima e tenha um atendimento especializado focado em resultados.
           </p>
           <Link 
             to="/agendamento" 
-            className="inline-flex items-center justify-center px-10 py-4 bg-white text-emerald-600 font-bold rounded-full hover:bg-gray-100 transition-all text-lg shadow-xl"
+            className="inline-flex items-center justify-center px-10 py-3.5 bg-emerald-500 text-emerald-950 text-sm font-bold rounded-xl hover:bg-emerald-400 transition-all shadow-xl active:scale-95"
           >
             Agendar Agora
           </Link>
@@ -142,27 +139,23 @@ const Home: React.FC = () => {
 const InsuranceLogoCard: React.FC<{ insurance: { name: string, slug: string, domain?: string, imageUrl?: string } }> = ({ insurance }) => {
   const [imageError, setImageError] = useState(false);
   
-  // Prioridade 1: Link direto (imageUrl)
-  // Prioridade 2: API de logos via domínio
   const logoUrl = insurance.imageUrl || (insurance.domain 
     ? `https://logo.clearbit.com/${insurance.domain}?size=160` 
     : null);
 
   return (
-    <div className="bg-white p-4 h-24 md:h-28 rounded-2xl border border-emerald-100 hover:border-emerald-400 hover:shadow-lg transition-all group overflow-hidden flex items-center justify-center">
+    <div className="bg-gray-50 p-4 h-20 rounded-xl border border-gray-100 hover:border-emerald-200 transition-all group flex items-center justify-center grayscale hover:grayscale-0">
       {logoUrl && !imageError ? (
         <img 
           src={logoUrl} 
           alt={`Logo ${insurance.name}`} 
-          className="max-h-full max-w-full object-contain group-hover:scale-110 transition-transform duration-300"
+          className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
           onError={() => setImageError(true)}
         />
       ) : (
-        <div className="flex flex-col items-center">
-           <span className="text-[9px] md:text-[10px] font-black text-emerald-800 uppercase tracking-tighter text-center px-1">
-            {insurance.name}
-          </span>
-        </div>
+        <span className="text-[8px] font-black text-emerald-800 uppercase text-center px-1">
+          {insurance.name}
+        </span>
       )}
     </div>
   );
