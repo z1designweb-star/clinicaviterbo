@@ -132,17 +132,17 @@ const Home: React.FC = () => {
   );
 };
 
-const InsuranceLogoCard: React.FC<{ insurance: { name: string, slug: string, domain?: string, imageUrl?: string } }> = ({ insurance }) => {
+const InsuranceLogoCard: React.FC<{ insurance: { name: string, slug: string, domain?: string } }> = ({ insurance }) => {
   const [imageError, setImageError] = useState(false);
   
-  // Prioriza o link manual (imageUrl) enviado pelo usuário.
-  // Caso não exista, tenta a Clearbit API usando o domínio.
-  const logoUrl = insurance.imageUrl || (insurance.domain 
+  // Usamos a Clearbit API que é excelente para logotipos corporativos baseados em domínio
+  // Se não houver domínio cadastrado ou a imagem falhar, mostramos o texto.
+  const logoUrl = insurance.domain 
     ? `https://logo.clearbit.com/${insurance.domain}?size=128` 
-    : null);
+    : null;
 
   return (
-    <div className="bg-white p-5 h-28 rounded-2xl border border-emerald-100 hover:border-emerald-400 hover:shadow-xl hover:shadow-emerald-900/5 flex items-center justify-center text-center transition-all group overflow-hidden">
+    <div className="bg-white p-5 h-28 rounded-2xl border border-emerald-100 hover:border-emerald-400 hover:shadow-xl hover:shadow-emerald-900/5 flex items-center justify-center text-center transition-all group overflow-hidden bg-white">
       {logoUrl && !imageError ? (
         <img 
           src={logoUrl} 

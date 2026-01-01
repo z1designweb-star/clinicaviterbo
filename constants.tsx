@@ -670,16 +670,10 @@ export interface Insurance {
   name: string;
   slug: string;
   domain?: string;
-  imageUrl?: string;
 }
 
 export const INSURANCES: Insurance[] = [
-  { 
-    name: 'Amil', 
-    slug: 'amil', 
-    domain: 'amil.com.br', 
-    imageUrl: 'https://drive.google.com/uc?export=view&id=17dGmAkPFdiFSsgxV4eM_euEBMObDEwus' 
-  },
+  { name: 'Amil', slug: 'amil', domain: 'amil.com.br' },
   { name: 'Apub', slug: 'apub', domain: 'apub.org.br' },
   { name: 'Asfeb', slug: 'asfeb', domain: 'asfeb.org.br' },
   { name: 'Asseba', slug: 'asseba' },
