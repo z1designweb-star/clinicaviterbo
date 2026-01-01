@@ -38,8 +38,8 @@ const ChatWidget: React.FC = () => {
     setError(null);
 
     try {
-      // Inicialização direta conforme as diretrizes
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+      // Fixed: Strictly following initialization guidelines by passing apiKey directly
+      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
       
       const response = await ai.models.generateContent({
         model: 'gemini-3-flash-preview',
