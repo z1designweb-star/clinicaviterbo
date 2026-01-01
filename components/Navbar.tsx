@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import { CLINIC_LOGO } from '../constants';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,9 +49,12 @@ const Navbar: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex-shrink-0 flex items-center">
-              <Link to="/" className="flex flex-col">
-                <span className="text-xl md:text-2xl font-serif font-bold text-emerald-900 leading-none tracking-tight">Clínica Viterbo</span>
-                <span className="text-[9px] uppercase tracking-[0.2em] text-emerald-600 font-bold mt-1">Acupuntura & Clínica da Dor</span>
+              <Link to="/" className="flex items-center gap-3">
+                <img src={CLINIC_LOGO} alt="Clínica Viterbo" className="h-10 w-auto object-contain" />
+                <div className="flex flex-col border-l border-emerald-100 pl-3">
+                  <span className="text-lg md:text-xl font-serif font-bold text-emerald-900 leading-none tracking-tight">Clínica Viterbo</span>
+                  <span className="text-[7px] uppercase tracking-[0.2em] text-emerald-600 font-bold mt-1">Acupuntura & Clínica da Dor</span>
+                </div>
               </Link>
             </div>
 

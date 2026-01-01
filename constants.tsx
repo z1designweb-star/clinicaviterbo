@@ -13,6 +13,8 @@ import {
   Thermometer 
 } from 'lucide-react';
 
+export const CLINIC_LOGO = 'https://lh3.googleusercontent.com/d/13wZyOpGP_mHYHcGG-4RH4_IWdUDVB8O7';
+
 export const SPECIALTIES = [
   { name: 'Acupuntura Médica', slug: 'acupuntura', icon: <Stethoscope className="w-8 h-8" /> },
   { name: 'Clínica da Dor', slug: 'clinica-da-dor', icon: <Activity className="w-8 h-8" /> },

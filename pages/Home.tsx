@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
-import { SPECIALTIES, INSURANCES } from '../constants';
+import { SPECIALTIES, INSURANCES, CLINIC_LOGO } from '../constants';
 
 const Home: React.FC = () => {
   return (
@@ -20,6 +20,13 @@ const Home: React.FC = () => {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-40 pb-24 md:py-32 lg:py-48">
           <div className="max-w-2xl">
+            <div className="mb-8 animate-in fade-in slide-in-from-left-4 duration-1000">
+              <img 
+                src={CLINIC_LOGO} 
+                alt="Logo Clínica Viterbo" 
+                className="w-32 md:w-48 h-auto object-contain drop-shadow-sm" 
+              />
+            </div>
             <h1 className="text-4xl md:text-6xl font-serif font-bold text-emerald-900 leading-tight mb-6">
               Sua saúde e alívio da dor são <span className="text-emerald-600">nossa prioridade.</span>
             </h1>
