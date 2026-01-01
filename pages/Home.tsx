@@ -42,6 +42,7 @@ const Home: React.FC = () => {
               </Link>
             </div>
 
+            {/* Ajuste de Responsividade nos Dados Estatísticos */}
             <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-y-8 gap-x-8 border-t border-gray-200 pt-8">
               <div className="flex flex-col items-center sm:items-start">
                 <p className="text-3xl font-bold text-emerald-900">6</p>
@@ -132,30 +133,29 @@ const Home: React.FC = () => {
   );
 };
 
-const InsuranceLogoCard: React.FC<{ insurance: { name: string, slug: string, domain?: string } }> = ({ insurance }) => {
+/**
+ * Componente interno para gerenciar a exibição do logotipo com fallback
+ */
+const InsuranceLogoCard: React.FC<{ insurance: { name: string, slug: string } }> = ({ insurance }) => {
   const [imageError, setImageError] = useState(false);
   
-  // Usamos a Clearbit API que é excelente para logotipos corporativos baseados em domínio
-  // Se não houver domínio cadastrado ou a imagem falhar, mostramos o texto.
-  const logoUrl = insurance.domain 
-    ? `https://logo.clearbit.com/${insurance.domain}?size=128` 
-    : null;
+  // Caminho sugerido para as imagens. Você deve colocar as imagens em:
+  // public/assets/logos/[slug].png
+  const logoPath = `/assets/logos/${insurance.slug}.png`;
 
   return (
-    <div className="bg-white p-5 h-28 rounded-2xl border border-emerald-100 hover:border-emerald-400 hover:shadow-xl hover:shadow-emerald-900/5 flex items-center justify-center text-center transition-all group overflow-hidden bg-white">
-      {logoUrl && !imageError ? (
+    <div className="bg-white p-4 h-24 rounded-xl border-2 border-emerald-50 hover:border-emerald-400 hover:shadow-md flex items-center justify-center text-center transition-all group overflow-hidden">
+      {!imageError ? (
         <img 
-          src={logoUrl} 
+          src={logoPath} 
           alt={`Logo ${insurance.name}`} 
-          className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300 grayscale group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
+          className="max-h-full max-w-full object-contain group-hover:scale-110 transition-transform duration-300"
           onError={() => setImageError(true)}
         />
       ) : (
-        <div className="flex flex-col items-center">
-           <span className="text-[10px] font-black text-emerald-800 uppercase tracking-tighter leading-tight">
-            {insurance.name}
-          </span>
-        </div>
+        <span className="text-xs font-bold text-gray-500 uppercase tracking-tighter">
+          {insurance.name}
+        </span>
       )}
     </div>
   );
