@@ -135,25 +135,24 @@ const Home: React.FC = () => {
 const InsuranceLogoCard: React.FC<{ insurance: { name: string, slug: string, domain?: string, imageUrl?: string } }> = ({ insurance }) => {
   const [imageError, setImageError] = useState(false);
   
-  // 1. Tenta o link direto do usuário
-  // 2. Tenta carregar automaticamente via domínio (API da Clearbit)
-  // 3. Tenta carregar localmente na pasta assets
-  const logoUrl = insurance.imageUrl || 
-                 (insurance.domain ? `https://logo.clearbit.com/${insurance.domain}` : null) ||
-                 `/assets/logos/${insurance.slug}.png`;
+  // Prioridade 1: Link direto (imageUrl)
+  // Prioridade 2: API de logos via domínio
+  const logoUrl = insurance.imageUrl || (insurance.domain 
+    ? `https://logo.clearbit.com/${insurance.domain}?size=160` 
+    : null);
 
   return (
-    <div className="bg-white p-5 h-28 rounded-2xl border border-emerald-100 hover:border-emerald-400 hover:shadow-xl hover:shadow-emerald-900/5 flex items-center justify-center text-center transition-all group overflow-hidden">
+    <div className="bg-white p-4 h-24 md:h-28 rounded-2xl border border-emerald-100 hover:border-emerald-400 hover:shadow-lg transition-all group overflow-hidden flex items-center justify-center">
       {logoUrl && !imageError ? (
         <img 
           src={logoUrl} 
           alt={`Logo ${insurance.name}`} 
-          className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300 grayscale group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
+          className="max-h-full max-w-full object-contain group-hover:scale-110 transition-transform duration-300"
           onError={() => setImageError(true)}
         />
       ) : (
         <div className="flex flex-col items-center">
-           <span className="text-[10px] font-black text-emerald-800 uppercase tracking-tighter leading-tight">
+           <span className="text-[9px] md:text-[10px] font-black text-emerald-800 uppercase tracking-tighter text-center px-1">
             {insurance.name}
           </span>
         </div>
