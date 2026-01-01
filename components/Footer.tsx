@@ -1,126 +1,68 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Instagram, Facebook, MessageCircle, Mail, Phone, MapPin, Zap, AlertTriangle } from 'lucide-react';
+import { Instagram, Facebook, MessageCircle, Mail, Phone, MapPin, Zap } from 'lucide-react';
 import { CONTACT_INFO } from '../constants';
 
 const Footer: React.FC = () => {
-  const apiKey = process.env.API_KEY || '';
-  const isApiConnected = apiKey.length > 0;
-  const apiKeySuffix = isApiConnected ? apiKey.slice(-4) : '----';
-
   return (
-    <footer className="bg-slate-900 text-white pt-16 pb-8">
+    <footer className="bg-emerald-950 text-white pt-12 pb-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          {/* Brand Column */}
-          <div className="space-y-6">
-            <h2 className="text-2xl font-serif font-bold text-white">Clínica Viterbo</h2>
-            <p className="text-slate-400 text-sm leading-relaxed">
-              Referência em Salvador no tratamento da dor e acupuntura médica. 
-              Compromisso com o seu bem-estar através de 6 unidades integradas.
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+          <div className="md:col-span-1 space-y-4">
+            <h2 className="text-lg font-serif font-bold">Clínica Viterbo</h2>
+            <p className="text-[11px] text-emerald-100/60 leading-relaxed">
+              Referência na Bahia no tratamento da dor. 6 unidades dedicadas ao seu bem-estar.
             </p>
-            <div className="flex space-x-4">
-              <a href={CONTACT_INFO.instagram} className="hover:text-emerald-400 transition-colors" target="_blank" rel="noopener noreferrer">
-                <Instagram size={24} />
-              </a>
-              <a href={CONTACT_INFO.facebook} className="hover:text-emerald-400 transition-colors" target="_blank" rel="noopener noreferrer">
-                <Facebook size={24} />
-              </a>
-              <a href={`https://wa.me/55${CONTACT_INFO.whatsapp.replace(/\D/g, '')}`} className="hover:text-emerald-400 transition-colors" target="_blank" rel="noopener noreferrer">
-                <MessageCircle size={24} />
-              </a>
+            <div className="flex gap-3">
+              {[Instagram, Facebook, MessageCircle].map((Icon, i) => (
+                <a key={i} href="#" className="w-8 h-8 rounded-lg bg-emerald-900/50 flex items-center justify-center hover:bg-emerald-600 transition-colors">
+                  <Icon size={16} />
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Links Column */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Links Úteis</h3>
-            <ul className="space-y-4">
-              <li>
-                <Link to="/privacidade" className="text-slate-400 hover:text-white text-sm transition-colors">Política de Privacidade</Link>
-              </li>
-              <li>
-                <Link to="/contato" className="text-slate-400 hover:text-white text-sm transition-colors">Envie seu Curriculum</Link>
-              </li>
-              <li>
-                <Link to="/contato" className="text-slate-400 hover:text-white text-sm transition-colors">Fale Conosco</Link>
-              </li>
-              <li>
-                <Link to="/unidades" className="text-slate-400 hover:text-white text-sm transition-colors">Nossas Unidades</Link>
-              </li>
+            <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-500 mb-4">Navegação</h3>
+            <ul className="space-y-2 text-[11px] text-emerald-100/70">
+              <li><Link to="/institucional" className="hover:text-white">Institucional</Link></li>
+              <li><Link to="/medicos" className="hover:text-white">Corpo Clínico</Link></li>
+              <li><Link to="/unidades" className="hover:text-white">Nossas Unidades</Link></li>
+              <li><Link to="/privacidade" className="hover:text-white">Privacidade</Link></li>
             </ul>
           </div>
 
-          {/* Contact Column */}
-          <div className="lg:col-span-2">
-            <h3 className="text-lg font-semibold mb-6">Contato Call Center</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="flex items-start space-x-3">
-                <Mail className="text-emerald-400 flex-shrink-0" size={20} />
-                <div className="text-sm">
-                  <p className="font-medium">Email</p>
-                  <a href={`mailto:${CONTACT_INFO.email}`} className="text-slate-400 hover:text-white">{CONTACT_INFO.email}</a>
-                </div>
+          <div className="md:col-span-2">
+            <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-500 mb-4">Central de Atendimento</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-[11px] text-emerald-100/70">
+              <div className="flex items-center gap-2">
+                <Phone size={14} className="text-emerald-500" />
+                <span>{CONTACT_INFO.phone}</span>
               </div>
-              <div className="flex items-start space-x-3">
-                <Phone className="text-emerald-400 flex-shrink-0" size={20} />
-                <div className="text-sm">
-                  <p className="font-medium">Telefone</p>
-                  <a href={`tel:${CONTACT_INFO.phone.replace(/\D/g, '')}`} className="text-slate-400 hover:text-white">{CONTACT_INFO.phone}</a>
-                </div>
+              <div className="flex items-center gap-2">
+                <Mail size={14} className="text-emerald-500" />
+                <span>{CONTACT_INFO.email}</span>
               </div>
-              <div className="flex items-start space-x-3">
-                <MessageCircle className="text-emerald-400 flex-shrink-0" size={20} />
-                <div className="text-sm">
-                  <p className="font-medium">WhatsApp</p>
-                  <a href={`https://wa.me/55${CONTACT_INFO.whatsapp.replace(/\D/g, '')}`} className="text-slate-400 hover:text-white">{CONTACT_INFO.whatsapp}</a>
-                </div>
+              <div className="flex items-center gap-2">
+                <MessageCircle size={14} className="text-emerald-500" />
+                <span>WhatsApp: {CONTACT_INFO.whatsapp}</span>
               </div>
-              <div className="flex items-start space-x-3">
-                <MapPin className="text-emerald-400 flex-shrink-0" size={20} />
-                <div className="text-sm">
-                  <p className="font-medium">Localização</p>
-                  <p className="text-slate-400">Salvador - Bahia (6 Unidades)</p>
-                </div>
+              <div className="flex items-center gap-2">
+                <MapPin size={14} className="text-emerald-500" />
+                <span>Bahia (6 Unidades)</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* API Status Section */}
-        <div className="border-t border-slate-800 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3 bg-slate-800/50 px-4 py-2 rounded-full border border-slate-700">
-            {isApiConnected ? (
-              <>
-                <div className="relative flex h-3 w-3">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Zap size={14} className="text-emerald-400 fill-emerald-400" />
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-400">API Conectada</span>
-                  <span className="text-[10px] text-slate-500 font-mono">ID: ****{apiKeySuffix}</span>
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="h-3 w-3 rounded-full bg-red-500"></div>
-                <div className="flex items-center gap-2">
-                  <AlertTriangle size={14} className="text-red-400" />
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-red-400">IA Offline (Configurar Vercel)</span>
-                </div>
-              </>
-            )}
+        <div className="border-t border-emerald-900 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="text-[9px] text-emerald-100/30 uppercase tracking-[0.2em]">
+            Resp. Técnico: Dr. Walter Viterbo (CRM 11188-BA)
           </div>
-          
-          <div className="text-slate-500 text-[10px] text-center md:text-right font-medium uppercase tracking-wider">
-            Responsável Técnico: Dr. Walter Viterbo (CRM 11188-BA)
-          </div>
-        </div>
-
-        <div className="border-t border-slate-800 pt-8 text-center text-slate-600 text-[10px] uppercase tracking-widest">
-          <p>&copy; {new Date().getFullYear()} Clínica Viterbo. Todos os direitos reservados.</p>
+          <p className="text-[9px] text-emerald-100/30 uppercase tracking-[0.2em]">
+            &copy; {new Date().getFullYear()} Clínica Viterbo.
+          </p>
         </div>
       </div>
     </footer>

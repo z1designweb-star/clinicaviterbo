@@ -13,7 +13,7 @@ const Navbar: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 10);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -35,7 +35,7 @@ const Navbar: React.FC = () => {
   const navLinks = [
     { label: 'Início', path: '/' },
     { label: 'Institucional', path: '/institucional' },
-    { label: 'Nossos Médicos', path: '/medicos' },
+    { label: 'Médicos', path: '/medicos' },
     { label: 'Agendamentos', path: '/agendamento' },
     { label: 'Especialidades', path: '/#especialidades', isAnchor: true, target: 'especialidades' },
     { label: 'Convênios', path: '/#convenios', isAnchor: true, target: 'convenios' },
@@ -44,83 +44,72 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <>
-      <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-1' : 'bg-transparent py-4'}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-14 md:h-16">
-            <div className="flex-shrink-0 flex items-center">
-              <Link to="/" className="flex items-center gap-2">
-                <img src={CLINIC_LOGO} alt="Clínica Viterbo" className="h-8 md:h-10 w-auto object-contain" />
-                <div className="flex flex-col border-l border-emerald-200/50 pl-2">
-                  <span className={`text-base md:text-lg font-serif font-bold transition-colors ${isScrolled ? 'text-emerald-950' : 'text-emerald-900'}`}>Clínica Viterbo</span>
-                  <span className="text-[6px] uppercase tracking-[0.2em] text-emerald-600 font-bold">Acupuntura & Clínica da Dor</span>
-                </div>
-              </Link>
-            </div>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-emerald-50 py-1' : 'bg-transparent py-3'}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-12 md:h-14">
+          <div className="flex-shrink-0">
+            <Link to="/" className="flex items-center gap-3">
+              <img src={CLINIC_LOGO} alt="Clínica Viterbo" className="h-7 md:h-8 w-auto" />
+              <div className="hidden sm:flex flex-col border-l border-emerald-100 pl-3">
+                <span className={`text-sm md:text-base font-serif font-bold ${isScrolled ? 'text-emerald-950' : 'text-emerald-900'}`}>Clínica Viterbo</span>
+                <span className="text-[7px] uppercase tracking-[0.2em] text-emerald-600/70 font-bold">Acupuntura & Clínica da Dor</span>
+              </div>
+            </Link>
+          </div>
 
-            <div className="hidden lg:flex items-center space-x-1">
-              {navLinks.map((link) => (
-                link.isAnchor ? (
-                  <a
-                    key={link.label}
-                    href={link.path}
-                    onClick={(e) => handleAnchorClick(e, link.target!)}
-                    className="px-3 py-1.5 rounded-lg text-xs font-bold text-gray-700 hover:text-emerald-600 transition-all uppercase tracking-wider"
-                  >
-                    {link.label}
-                  </a>
-                ) : (
-                  <Link
-                    key={link.label}
-                    to={link.path}
-                    className="px-3 py-1.5 rounded-lg text-xs font-bold text-gray-700 hover:text-emerald-600 transition-all uppercase tracking-wider"
-                  >
-                    {link.label}
-                  </Link>
-                )
-              ))}
-            </div>
+          <div className="hidden lg:flex items-center space-x-0.5">
+            {navLinks.map((link) => (
+              link.isAnchor ? (
+                <a
+                  key={link.label}
+                  href={link.path}
+                  onClick={(e) => handleAnchorClick(e, link.target!)}
+                  className="px-3 py-1.5 rounded-lg text-[10px] font-bold text-gray-500 hover:text-emerald-700 hover:bg-emerald-50 transition-all uppercase tracking-wider"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.label}
+                  to={link.path}
+                  className={`px-3 py-1.5 rounded-lg text-[10px] font-bold transition-all uppercase tracking-wider ${
+                    location.pathname === link.path ? 'text-emerald-700 bg-emerald-50/50' : 'text-gray-500 hover:text-emerald-700'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              )
+            ))}
+          </div>
 
-            <div className="lg:hidden flex items-center">
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="p-2 rounded-md text-emerald-900 hover:bg-emerald-50 transition-colors"
-              >
-                {isOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
-            </div>
+          <div className="lg:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-1.5 rounded-lg text-emerald-900 hover:bg-emerald-50 transition-colors"
+            >
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
           </div>
         </div>
+      </div>
 
-        {isOpen && (
-          <div className="lg:hidden bg-white shadow-xl absolute w-full left-0 border-t border-gray-100 animate-in slide-in-from-top-2 duration-200">
-            <div className="px-4 pt-2 pb-6 space-y-1">
-              {navLinks.map((link) => (
-                link.isAnchor ? (
-                  <a
-                    key={link.label}
-                    href={link.path}
-                    onClick={(e) => handleAnchorClick(e, link.target!)}
-                    className="block px-4 py-3 rounded-xl text-sm font-bold text-gray-800 hover:text-emerald-600 hover:bg-emerald-50 transition-all"
-                  >
-                    {link.label}
-                  </a>
-                ) : (
-                  <Link
-                    key={link.label}
-                    to={link.path}
-                    onClick={() => setIsOpen(false)}
-                    className="block px-4 py-3 rounded-xl text-sm font-bold text-gray-800 hover:text-emerald-600 hover:bg-emerald-50 transition-all"
-                  >
-                    {link.label}
-                  </Link>
-                )
-              ))}
-            </div>
+      {isOpen && (
+        <div className="lg:hidden bg-white border-t border-gray-100 shadow-xl absolute w-full animate-in slide-in-from-top-1 duration-200">
+          <div className="px-4 py-4 space-y-0.5">
+            {navLinks.map((link) => (
+              <Link
+                key={link.label}
+                to={link.path}
+                onClick={() => setIsOpen(false)}
+                className="block px-4 py-2.5 rounded-xl text-xs font-bold text-gray-700 hover:text-emerald-700 hover:bg-emerald-50"
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
-        )}
-      </nav>
-    </>
+        </div>
+      )}
+    </nav>
   );
 };
 
