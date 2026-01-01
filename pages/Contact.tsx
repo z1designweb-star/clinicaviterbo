@@ -7,132 +7,74 @@ const Contact: React.FC = () => {
   const whatsappUrl = `https://wa.me/55${CONTACT_INFO.whatsapp.replace(/\D/g, '')}`;
 
   return (
-    <div className="pt-24 pb-10 bg-gray-50/30 min-h-screen overflow-x-hidden flex flex-col justify-center">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        {/* Header - More compact */}
-        <div className="max-w-3xl mx-auto text-center mb-8 md:mb-12">
-          <h1 className="text-2xl md:text-4xl font-serif font-bold text-emerald-900 mb-2 md:mb-4 uppercase tracking-tight">Fale Conosco</h1>
-          <p className="text-sm md:text-base text-gray-600 leading-relaxed max-w-xl mx-auto">
+    <div className="pt-24 pb-10 bg-white min-h-screen flex flex-col justify-center">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="max-w-2xl mx-auto text-center mb-10">
+          <h1 className="text-2xl md:text-3xl font-serif font-bold text-emerald-950 mb-3 tracking-tight uppercase">Fale Conosco</h1>
+          <p className="text-xs md:text-sm text-gray-500 leading-relaxed max-w-lg mx-auto">
             Canais diretos para agendamentos ou acesso ao nosso portal de registros oficiais.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-10 items-stretch max-w-6xl mx-auto">
-          {/* Occurrence Registration Area - Left Column */}
-          <div className="bg-white rounded-[2rem] shadow-xl shadow-emerald-900/5 border border-emerald-100 overflow-hidden relative group flex flex-col">
-            {/* Top Accent Gradient */}
-            <div className="h-1.5 w-full bg-gradient-to-r from-emerald-600 via-emerald-400 to-teal-500" />
-            
-            <div className="p-6 md:p-10 flex flex-col items-center text-center justify-center flex-grow">
-              <div className="w-12 h-12 md:w-16 md:h-16 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center shadow-inner mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500 border border-emerald-100">
-                <FileText size={32} />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 items-stretch max-w-5xl mx-auto">
+          {/* Portal Area */}
+          <div className="bg-gray-50/50 rounded-2xl border border-emerald-50 overflow-hidden flex flex-col group">
+            <div className="h-1 w-full bg-emerald-600/20" />
+            <div className="p-8 md:p-10 flex flex-col items-center text-center justify-center flex-grow">
+              <div className="w-12 h-12 bg-white text-emerald-600 rounded-xl flex items-center justify-center shadow-sm mb-6 border border-emerald-50">
+                <FileText size={24} />
               </div>
-              
-              <h3 className="text-xl md:text-2xl font-serif font-bold text-emerald-950 mb-3">Portal de Atendimento</h3>
-              <p className="text-gray-500 mb-8 max-w-xs leading-relaxed text-xs md:text-sm">
-                Canal oficial para registro de ocorrências, sugestões ou elogios via Google Forms.
+              <h3 className="text-lg md:text-xl font-serif font-bold text-emerald-950 mb-3">Portal de Atendimento</h3>
+              <p className="text-gray-400 mb-8 max-w-xs text-[11px] md:text-xs leading-relaxed">
+                Canal oficial para registro de ocorrências, sugestões ou elogios.
               </p>
-
               <a 
                 href="https://forms.gle/nS6Wp15UQ5eunj2x5"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-emerald-600 text-white font-black rounded-xl hover:bg-emerald-700 transition-all duration-300 shadow-lg shadow-emerald-200 active:scale-95 text-sm md:text-base"
+                className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-emerald-700 text-white text-[11px] font-black rounded-lg hover:bg-emerald-800 transition-all uppercase tracking-wider"
               >
-                Registro de Ocorrências
-                <ChevronRight size={18} />
+                Registrar Ocorrência
+                <ChevronRight size={14} />
               </a>
-
-              <div className="mt-8 flex items-center justify-center gap-2 text-[9px] text-emerald-600/40 font-bold uppercase tracking-widest">
-                <Sparkles size={10} />
-                Protocolo oficial
-              </div>
             </div>
           </div>
 
-          {/* Right Column: Contacts + Career */}
-          <div className="flex flex-col gap-6">
-            {/* Direct Channels - Compacted */}
-            <div className="bg-white/60 p-5 md:p-8 rounded-[2rem] border border-emerald-100/50 flex-grow">
-              <h2 className="text-xl md:text-2xl font-serif font-bold text-emerald-950 mb-6 flex items-center gap-2">
-                Canais Diretos
-              </h2>
-              <div className="space-y-4 md:space-y-6">
-                {/* Email Item */}
-                <div className="flex items-center gap-4 group">
-                  <div className="w-10 h-10 md:w-12 md:h-12 bg-white text-emerald-600 rounded-xl flex items-center justify-center shrink-0 shadow-md group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300 border border-emerald-50">
-                    <Mail size={20} />
+          {/* Contacts Area */}
+          <div className="flex flex-col gap-4">
+            <div className="bg-white p-6 md:p-8 rounded-2xl border border-gray-100 shadow-sm">
+              <h2 className="text-xs font-black text-emerald-900 uppercase tracking-widest mb-6">Canais Diretos</h2>
+              <div className="space-y-5">
+                {[
+                  { icon: <Mail size={16} />, label: 'E-mail', val: CONTACT_INFO.email, href: `mailto:${CONTACT_INFO.email}`, color: 'text-emerald-600' },
+                  { icon: <MessageCircle size={16} />, label: 'WhatsApp', val: CONTACT_INFO.whatsapp, href: whatsappUrl, color: 'text-green-600' },
+                  { icon: <Phone size={16} />, label: 'Call Center', val: CONTACT_INFO.phone, href: `tel:${CONTACT_INFO.phone.replace(/\D/g, '')}`, color: 'text-gray-900' }
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-4">
+                    <div className={`w-9 h-9 bg-gray-50 ${item.color} rounded-lg flex items-center justify-center shrink-0 border border-gray-100`}>
+                      {item.icon}
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-0.5">{item.label}</p>
+                      <a href={item.href} className="text-xs md:text-sm font-bold text-emerald-950 hover:text-emerald-600 truncate block">{item.val}</a>
+                    </div>
                   </div>
-                  <div className="min-w-0">
-                    <p className="text-[9px] font-black text-emerald-600/60 uppercase tracking-widest mb-0.5">E-mail</p>
-                    <a 
-                      href={`mailto:${CONTACT_INFO.email}`} 
-                      className="text-sm md:text-base font-bold text-emerald-950 hover:text-emerald-600 transition-colors block truncate"
-                    >
-                      {CONTACT_INFO.email}
-                    </a>
-                  </div>
-                </div>
-
-                {/* WhatsApp Item */}
-                <div className="flex items-center gap-4 group">
-                  <div className="w-10 h-10 md:w-12 md:h-12 bg-white text-green-600 rounded-xl flex items-center justify-center shrink-0 shadow-md group-hover:bg-green-600 group-hover:text-white transition-all duration-300 border border-emerald-50">
-                    <MessageCircle size={20} />
-                  </div>
-                  <div>
-                    <p className="text-[9px] font-black text-green-600/60 uppercase tracking-widest mb-0.5">WhatsApp</p>
-                    <a 
-                      href={whatsappUrl} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-sm md:text-base font-bold text-emerald-950 hover:text-green-600 transition-colors block"
-                    >
-                      {CONTACT_INFO.whatsapp}
-                    </a>
-                  </div>
-                </div>
-
-                {/* Phone Item */}
-                <div className="flex items-center gap-4 group">
-                  <div className="w-10 h-10 md:w-12 md:h-12 bg-white text-gray-900 rounded-xl flex items-center justify-center shrink-0 shadow-md group-hover:bg-emerald-900 group-hover:text-white transition-all duration-300 border border-emerald-50">
-                    <Phone size={20} />
-                  </div>
-                  <div>
-                    <p className="text-[9px] font-black text-gray-400 uppercase tracking-widest mb-0.5">Call Center</p>
-                    <a 
-                      href={`tel:${CONTACT_INFO.phone.replace(/\D/g, '')}`} 
-                      className="text-sm md:text-base font-bold text-emerald-950 hover:text-emerald-600 transition-colors block"
-                    >
-                      {CONTACT_INFO.phone}
-                    </a>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
 
-            {/* Career Card - More compact */}
-            <div className="p-6 md:p-8 bg-gradient-to-br from-emerald-900 via-emerald-950 to-black rounded-[2rem] shadow-xl text-white relative overflow-hidden group">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full -mr-16 -mt-16 blur-2xl group-hover:bg-emerald-500/20 transition-all duration-700"></div>
-              
-              <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="p-6 bg-emerald-950 rounded-2xl text-white relative overflow-hidden group">
+              <div className="relative z-10 flex items-center justify-between gap-4">
                 <div>
-                  <span className="inline-block px-2 py-0.5 bg-emerald-800/50 text-emerald-400 text-[9px] font-black rounded-md uppercase tracking-widest mb-2 border border-emerald-700/50">
-                    Carreira
-                  </span>
-                  <h3 className="text-lg md:text-xl font-serif font-bold mb-1">Trabalhe Conosco</h3>
-                  <p className="text-[11px] md:text-xs text-emerald-100/70 max-w-xs leading-relaxed">
-                    Envie seu currículo para nosso setor de talentos.
-                  </p>
+                  <h3 className="text-sm font-bold mb-1">Trabalhe Conosco</h3>
+                  <p className="text-[10px] text-emerald-100/50 uppercase tracking-tight">Envie seu currículo para talentos</p>
                 </div>
-                <div className="flex shrink-0">
-                  <a 
-                    href="mailto:diretoria@clinicaviterbo.com.br"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-white text-emerald-900 text-[11px] font-black rounded-xl hover:bg-emerald-50 hover:scale-105 transition-all shadow-md active:scale-95 whitespace-nowrap"
-                  >
-                    <Mail size={14} />
-                    Enviar Currículo
-                  </a>
-                </div>
+                <a 
+                  href="mailto:diretoria@clinicaviterbo.com.br"
+                  className="px-5 py-2.5 bg-white text-emerald-900 text-[10px] font-black rounded-lg hover:bg-emerald-50 transition-all uppercase tracking-wider whitespace-nowrap"
+                >
+                  Enviar
+                </a>
               </div>
             </div>
           </div>

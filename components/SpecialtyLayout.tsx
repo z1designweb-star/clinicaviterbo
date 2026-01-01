@@ -10,49 +10,49 @@ interface SpecialtyLayoutProps {
 
 const SpecialtyLayout: React.FC<SpecialtyLayoutProps> = ({ title, children }) => {
   return (
-    <div className="pt-24 pb-20">
+    <div className="pt-24 pb-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link 
           to="/#especialidades" 
-          className="inline-flex items-center text-emerald-600 font-semibold mb-8 hover:text-emerald-800 transition-colors"
+          className="inline-flex items-center text-emerald-600/70 text-[11px] font-bold mb-8 hover:text-emerald-800 transition-all uppercase tracking-widest"
         >
-          <ChevronLeft size={20} className="mr-1" />
-          Voltar para Especialidades
+          <ChevronLeft size={16} className="mr-1" />
+          Voltar
         </Link>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           <div className="lg:col-span-8">
-            <h1 className="text-4xl md:text-5xl font-serif font-bold text-emerald-900 mb-8 border-b border-emerald-100 pb-4">{title}</h1>
-            <div className="prose prose-lg prose-emerald max-w-none text-gray-700 leading-relaxed space-y-6">
+            <h1 className="text-2xl md:text-3xl font-serif font-bold text-emerald-950 mb-6 border-b border-emerald-50 pb-4 tracking-tight">{title}</h1>
+            <div className="prose prose-sm md:prose-base prose-emerald max-w-none text-gray-600 leading-relaxed space-y-5">
               {children}
             </div>
           </div>
 
           <div className="lg:col-span-4">
-            <div className="sticky top-28 space-y-8">
-              <div className="bg-emerald-900 text-white p-8 rounded-3xl shadow-xl">
-                <h3 className="text-xl font-bold mb-4">Agende seu Atendimento</h3>
-                <p className="text-emerald-100 mb-6 text-sm">Oferecemos tratamento especializado com foco no seu bem-estar.</p>
+            <div className="sticky top-28 space-y-6">
+              <div className="bg-emerald-900 p-8 rounded-2xl shadow-lg shadow-emerald-900/10 text-white">
+                <h3 className="text-lg font-bold mb-3">Agende sua Consulta</h3>
+                <p className="text-emerald-100/70 mb-6 text-xs leading-relaxed">Equipe multidisciplinar pronta para oferecer o melhor tratamento.</p>
                 <Link 
                   to="/agendamento" 
-                  className="flex items-center justify-center w-full py-4 bg-white text-emerald-900 rounded-xl font-bold hover:bg-emerald-50 transition-all gap-2"
+                  className="flex items-center justify-center w-full py-3 bg-white text-emerald-900 rounded-lg text-xs font-black uppercase tracking-wider hover:bg-emerald-50 transition-all gap-2"
                 >
-                  <Calendar size={18} />
-                  Marcar Consulta
+                  <Calendar size={14} />
+                  Marcar Agora
                 </Link>
               </div>
 
-              <div className="bg-gray-50 p-8 rounded-3xl border border-gray-100">
-                <h3 className="text-lg font-bold text-gray-900 mb-4">Por que escolher a Viterbo?</h3>
-                <ul className="space-y-4">
+              <div className="bg-gray-50/50 p-6 rounded-2xl border border-gray-100">
+                <h3 className="text-[10px] font-black text-emerald-900 uppercase tracking-[0.2em] mb-4">Diferenciais Viterbo</h3>
+                <ul className="space-y-3">
                   {[
                     "Equipe Multidisciplinar",
-                    "6 Unidades em Salvador e Lauro de Freitas",
-                    "Atendimento Humanizado",
-                    "Tecnologia e Tradição"
+                    "6 Unidades na Bahia",
+                    "Tradição e Modernidade",
+                    "Foco no Paciente"
                   ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-3 text-sm text-gray-600">
-                      <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full mt-1.5 shrink-0" />
+                    <li key={i} className="flex items-center gap-2.5 text-[11px] text-gray-500 font-medium">
+                      <div className="w-1 h-1 bg-emerald-400 rounded-full shrink-0" />
                       {item}
                     </li>
                   ))}
