@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
 import { SPECIALTIES, INSURANCES } from '../constants';
@@ -102,12 +102,7 @@ const Home: React.FC = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {INSURANCES.map((insurance, index) => (
-              <div 
-                key={index} 
-                className="bg-emerald-50 p-4 rounded-xl border-2 border-emerald-100 hover:border-emerald-400 flex items-center justify-center text-center transition-all"
-              >
-                <span className="text-sm font-semibold text-gray-700">{insurance}</span>
-              </div>
+              <InsuranceLogoCard key={index} insurance={insurance} />
             ))}
           </div>
           
@@ -134,6 +129,34 @@ const Home: React.FC = () => {
           </Link>
         </div>
       </section>
+    </div>
+  );
+};
+
+/**
+ * Componente interno para gerenciar a exibição do logotipo com fallback
+ */
+const InsuranceLogoCard: React.FC<{ insurance: { name: string, slug: string } }> = ({ insurance }) => {
+  const [imageError, setImageError] = useState(false);
+  
+  // Caminho sugerido para as imagens. Você deve colocar as imagens em:
+  // public/assets/logos/[slug].png
+  const logoPath = `/assets/logos/${insurance.slug}.png`;
+
+  return (
+    <div className="bg-white p-4 h-24 rounded-xl border-2 border-emerald-50 hover:border-emerald-400 hover:shadow-md flex items-center justify-center text-center transition-all group overflow-hidden">
+      {!imageError ? (
+        <img 
+          src={logoPath} 
+          alt={`Logo ${insurance.name}`} 
+          className="max-h-full max-w-full object-contain group-hover:scale-110 transition-transform duration-300"
+          onError={() => setImageError(true)}
+        />
+      ) : (
+        <span className="text-xs font-bold text-gray-500 uppercase tracking-tighter">
+          {insurance.name}
+        </span>
+      )}
     </div>
   );
 };

@@ -666,13 +666,50 @@ export const UNIQUE_DOCTOR_SPECIALTIES = Array.from(
   new Set(ALL_DOCTORS.flatMap(doc => doc.specialties))
 ).sort();
 
-export const INSURANCES = [
-  'Amil', 'Apub', 'Asfeb', 'Asseba', 'Assefaz', 'Asteba', 'AtitudeSaúde', 'BCSaúde', 
-  'Camed Saúde', 'CapSaúde', 'Casembrapa', 'Casseb', 'Cassi', 'Codevasf', 'Conab', 
-  'Fachesf', 'Fusex', 'Gama', 'Geap Saúde', 'Hapvida', 'Hospital Naval de Salvador', 
-  'Life', 'Nordeste Saúde Empresarial', 'NotreDame Intermédica', 'Pasa', 'Saúde Petrobrás', 
-  'Plan-Assiste', 'Planserv', 'Porto Saúde', 'Postal Saúde', 'Pro-Social', 'Saúde Caixa', 
-  'Select', 'Sepaco', 'Telos', 'Trt5', 'Unafisco Saúde', 'Vale'
+export interface Insurance {
+  name: string;
+  slug: string;
+}
+
+export const INSURANCES: Insurance[] = [
+  { name: 'Amil', slug: 'amil' },
+  { name: 'Apub', slug: 'apub' },
+  { name: 'Asfeb', slug: 'asfeb' },
+  { name: 'Asseba', slug: 'asseba' },
+  { name: 'Assefaz', slug: 'assefaz' },
+  { name: 'Asteba', slug: 'asteba' },
+  { name: 'Atitude Saúde', slug: 'atitude-saude' },
+  { name: 'BC Saúde', slug: 'bc-saude' },
+  { name: 'Camed Saúde', slug: 'camed-saude' },
+  { name: 'CapSaúde', slug: 'cap-saude' },
+  { name: 'Casembrapa', slug: 'casembrapa' },
+  { name: 'Casseb', slug: 'casseb' },
+  { name: 'Cassi', slug: 'cassi' },
+  { name: 'Codevasf', slug: 'codevasf' },
+  { name: 'Conab', slug: 'conab' },
+  { name: 'Fachesf', slug: 'fachesf' },
+  { name: 'Fusex', slug: 'fusex' },
+  { name: 'Gama', slug: 'gama' },
+  { name: 'Geap Saúde', slug: 'geap-saude' },
+  { name: 'Hapvida', slug: 'hapvida' },
+  { name: 'Hospital Naval', slug: 'hospital-naval' },
+  { name: 'Life', slug: 'life' },
+  { name: 'Nordeste Saúde', slug: 'nordeste-saude' },
+  { name: 'NotreDame', slug: 'notredame' },
+  { name: 'Pasa', slug: 'pasa' },
+  { name: 'Saúde Petrobrás', slug: 'petrobras' },
+  { name: 'Plan-Assiste', slug: 'plan-assiste' },
+  { name: 'Planserv', slug: 'planserv' },
+  { name: 'Porto Saúde', slug: 'porto-saude' },
+  { name: 'Postal Saúde', slug: 'postal-saude' },
+  { name: 'Pro-Social', slug: 'pro-social' },
+  { name: 'Saúde Caixa', slug: 'saude-caixa' },
+  { name: 'Select', slug: 'select' },
+  { name: 'Sepaco', slug: 'sepaco' },
+  { name: 'Telos', slug: 'telos' },
+  { name: 'Trt5', slug: 'trt5' },
+  { name: 'Unafisco Saúde', slug: 'unafisco-saude' },
+  { name: 'Vale', slug: 'vale' }
 ];
 
 export const CONTACT_INFO = {
