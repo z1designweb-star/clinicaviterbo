@@ -699,7 +699,7 @@ export const INSURANCES: Insurance[] = [
   { name: 'Nordeste Saúde', slug: 'nordeste-saude', imageUrl: 'https://lh3.googleusercontent.com/d/1Sr053SdHtnCdu2AHihgouxt0JuZQ8U3m' },
   { name: 'NotreDame', slug: 'notredame', domain: 'gndi.com.br', imageUrl: 'https://lh3.googleusercontent.com/d/1PURAk1_4hNaexNO4xa-GudjseQDjhxRO' },
   { name: 'Pasa', slug: 'pasa', domain: 'saudepasa.com.br', imageUrl: 'https://lh3.googleusercontent.com/d/1i_Ulo8gOaFIMXtwPPV1vCLA0IOhjjgaB' },
-  { name: 'Saúde Petrobrás', slug: 'petrobras', domain: 'saudepetrobras.com.br', imageUrl: 'https://lh3.googleusercontent.com/d/1V6MlNh3DfvZzvXYNc9n0qXtKmG5PaSkA' },
+  { name: 'Saúde Petrobrás', slug: 'petrobras', domain: 'saudepetrobras.com.br', imageUrl: 'https://lh3.googleusercontent.com/d/1h1XK2NklUa5ez8bhYUF73gqop2M3Tc11' },
   { name: 'Plan-Assiste', slug: 'plan-assiste', domain: 'mpu.mp.br', imageUrl: 'https://lh3.googleusercontent.com/d/1RD15LPbUALBVhafbbtCLuPxBUfuYZP-w' },
   { name: 'Planserv', slug: 'planserv', domain: 'planserv.ba.gov.br', imageUrl: 'https://lh3.googleusercontent.com/d/1AnxeP62Ff5Qgdctr_r_ml8-soztNK8as' },
   { name: 'Porto Saúde', slug: 'porto-saude', domain: 'portoseguro.com.br', imageUrl: 'https://lh3.googleusercontent.com/d/1BtRF3hzCvM8A1ESU2trWDkQjvmoSX0w3' },
