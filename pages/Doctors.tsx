@@ -177,7 +177,7 @@ const Doctors: React.FC = () => {
                         className="flex items-center justify-center gap-3 w-full py-4 bg-emerald-600 text-white font-black rounded-2xl hover:bg-emerald-700 transition-all duration-300 shadow-xl shadow-emerald-200 group-hover:scale-[1.03] active:scale-95"
                       >
                         <MessageSquare size={18} />
-                        Otimizar Agendamento
+                        Agendar Consulta
                       </a>
                     </div>
                   </div>
